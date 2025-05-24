@@ -1,9 +1,10 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "lib": ["ES2020"],
-    "types": ["node"],
-    "module": "ES2020"
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true
   },
   "include": ["vite.config.ts"]
 }
