@@ -10,8 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/merriweather": "^5.2.7",
+    "@fontsource/noto-serif-kr": "^5.2.5",
+    "@fontsource/playfair-display": "^5.2.5",
     "@tailwindcss/vite": "^4.1.7",
     "firebase": "^11.8.1",
+    "framer-motion": "^12.12.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.7"

@@ -1,2 +1,7 @@
 @import "tailwindcss";
 
+@theme {
+  --font-merriweather: "Merriweather", "sans-serif";
+  --font-playFair: "Playfair Display", "sans-serif";
+  --font-nanoSerifKr: "Noto Serif KR", "sans-serif";
+}
