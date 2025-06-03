@@ -2,10 +2,11 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
+import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), visualizer()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -16,4 +17,16 @@ export default defineConfig({
       '@utils': path.resolve(__dirname, './src/utils'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('firebase')) return 'firebase';
+          if (id.includes('firebase')) return 'firebase';
+          if (id.includes('framer-motion')) return 'motion';
+          if (id.includes('react-spinners')) return 'spinners';
+        }
+      }
+    }
+  }
 })
