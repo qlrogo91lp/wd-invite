@@ -45,7 +45,7 @@ export default function CommentBox() {
 	}, []);
 
 	return (
-		<div className="max-w-md mx-auto mt-10 p-4 border rounded shadow">
+		<section className="max-w-md mx-auto mt-10 p-4 border rounded shadow">
 			<h2 className="text-xl font-bold mb-4">💬 실시간 댓글</h2>
 			<div className="flex gap-2 mb-4">
 				<input
@@ -68,6 +68,6 @@ export default function CommentBox() {
 					</li>
 				))}
 			</ul>
-		</div>
+		</section>
 	);
 }

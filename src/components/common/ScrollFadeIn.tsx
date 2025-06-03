@@ -23,6 +23,7 @@ export default function ScrollFadeIn({
 
 	return (
 		<motion.div
+			className='flex flex-col gap-15'
 			initial={{
 				opacity: 0,
 				...directionOffset[direction]
