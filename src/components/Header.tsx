@@ -1,4 +1,4 @@
-import Cover from  '@images/wd1.jpg';
+
 import Edge from '@svgs/bottomEdge.svg';
 
 export default function Header() {
@@ -8,7 +8,7 @@ export default function Header() {
 				<p className='text-white font-merriweather text-l'>YOONJAE</p>
 				<p className='text-white font-merriweather text-l'>JIEUN</p>
 			</div>
-			<img src={Cover} alt='cover'/>
+			<img src='https://kr.object.ncloudstorage.com/gandi-cdn/pic/wd1.jpg' alt='cover' loading='lazy' />
 			<aside className='absolute flex flex-col items-center justify-center w-full bottom-15'>
 				<p className='mb-5 text-white font-merriweather text-l'>September 13, 2025</p>
 				<p className='text-white text-[0.5rem] tracking-tight'>We, who have similar smiles, are getting married.</p>

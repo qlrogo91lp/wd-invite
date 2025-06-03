@@ -15,5 +15,5 @@ export default defineConfig({
       '@svgs': path.resolve(__dirname, './src/assets/svgs'),
       '@utils': path.resolve(__dirname, './src/utils'),
     },
-  }
+  },
 })
