@@ -1,9 +1,10 @@
 import Header from '@components/Header'
-import CommentBox from './components/CommentBox'
 import OpeningMessage from '@components/OpeningMessage'
 import ScrollFadeIn from '@components/common/ScrollFadeIn'
 import CustomCountdown from '@components/countdown/CustomCountdown'
 import Calendar from '@components/Calendar'
+import FamilyNames from '@components/FamliyNames'
+import Footer from '@components/Footer'
 
 function App() {
   return (
@@ -11,10 +12,11 @@ function App() {
       <Header />
       <ScrollFadeIn>
         <OpeningMessage />
+        <FamilyNames />
         <CustomCountdown />
         <Calendar />
       </ScrollFadeIn>
-      <CommentBox />
+      <Footer />
     </main>
   )
 }
