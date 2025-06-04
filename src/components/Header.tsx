@@ -1,4 +1,3 @@
-
 import Edge from '@svgs/bottomEdge.svg';
 
 export default function Header() {
