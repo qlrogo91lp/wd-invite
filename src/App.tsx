@@ -4,6 +4,7 @@ import ScrollFadeIn from '@components/common/ScrollFadeIn'
 import CustomCountdown from '@components/countdown/CustomCountdown'
 import Calendar from '@components/Calendar'
 import CommentBoxSuspense from '@components/comment/CommentBoxSuspense'
+import FamilyNames from '@components/FamliyNames'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header />
       <ScrollFadeIn>
         <OpeningMessage />
+        <FamilyNames />
         <CustomCountdown />
         <Calendar />
         <CommentBoxSuspense />
