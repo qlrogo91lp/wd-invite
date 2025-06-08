@@ -22,5 +22,5 @@ export default function NaverMap() {
 		});
 	}, []);
 
-	return <div ref={mapRef} className="w-full h-[400px]" />;
+	return <div ref={mapRef} className="w-full aspect-square" />;
 }
