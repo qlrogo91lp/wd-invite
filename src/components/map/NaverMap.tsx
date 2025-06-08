@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { LOCATION_X, LOCATION_Y } from './Directions';
 
 export default function NaverMap() {
 	const mapRef = useRef<HTMLDivElement | null>(null);
@@ -7,12 +8,16 @@ export default function NaverMap() {
 		if (!mapRef.current || !window.naver) return;
 
 		const map = new window.naver.maps.Map(mapRef.current, {
-			center: new window.naver.maps.LatLng(37.5050847, 127.0343736),
+			center: new window.naver.maps.LatLng(LOCATION_X, LOCATION_Y),
 			zoom: 16,
+			zoomControl: true,
+			zoomControlOptions: {
+				position: window.naver.maps.Position.TOP_RIGHT
+			}
 		});
 
 		new window.naver.maps.Marker({
-			position: new window.naver.maps.LatLng(37.5050847, 127.0343736),
+			position: new window.naver.maps.LatLng(LOCATION_X, LOCATION_Y),
 			map,
 		});
 	}, []);

@@ -34,7 +34,7 @@ export default function ScrollFadeIn({
 				y: 0
 			}}
 			viewport={{
-				once: false,
+				once: true,
 				amount: 0.3
 			}}
 			transition={{

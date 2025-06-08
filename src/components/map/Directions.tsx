@@ -1,4 +1,10 @@
+import KakaoMapLauncher from './KakaoMapLauncher';
 import NaverMap from './NaverMap';
+import NaverMapLauncher from './NaverMapLauncher';
+
+export const LOCATION_X = 37.5050847;
+export const LOCATION_Y = 127.0343736;
+export const LOCATION_NAME = '더채플 앳 논현';
 
 export default function Directions() {
 	return (
@@ -9,6 +15,10 @@ export default function Directions() {
 				<p>더채플 앳 논현 5층 라메르홀</p>
 			</hgroup>
 			<NaverMap />
+			<article className='mt-10 flex gap-5 justify-center'>
+				<NaverMapLauncher />
+				<KakaoMapLauncher />
+			</article>
 		</section>
 	);
 }
