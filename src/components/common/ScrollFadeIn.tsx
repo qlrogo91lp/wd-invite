@@ -24,24 +24,24 @@ export default function ScrollFadeIn({
 	return (
 		<motion.div
 			className='flex flex-col gap-15'
-			initial={{
-				opacity: 0,
-				...directionOffset[direction]
-			}}
-			whileInView={{
-				opacity: 1,
-				x: 0,
-				y: 0
-			}}
-			viewport={{
-				once: true,
-				amount: 0.3
-			}}
-			transition={{
-				duration: 0.6,
-				delay,
-				ease: "easeOut"
-			}}
+			// initial={{
+			// 	opacity: 0,
+			// 	...directionOffset[direction]
+			// }}
+			// whileInView={{
+			// 	opacity: 1,
+			// 	x: 0,
+			// 	y: 0
+			// }}
+			// viewport={{
+			// 	once: true,
+			// 	amount: 0.3
+			// }}
+			// transition={{
+			// 	duration: 0.6,
+			// 	delay,
+			// 	ease: "easeOut"
+			// }}
 		>
 			{children}
 		</motion.div>

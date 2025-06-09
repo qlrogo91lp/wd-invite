@@ -6,7 +6,7 @@ import Calendar from '@components/Calendar'
 import FamilyNames from '@components/FamliyNames'
 import Footer from '@components/Footer'
 import Directions from '@components/map/Directions'
-import Gallery from '@components/Gallery'
+import CustomGallery from '@components/CustomGallery'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <ScrollFadeIn>
         <OpeningMessage />
         <FamilyNames />
-        <Gallery />
+        <CustomGallery />
         <CustomCountdown />
         <Calendar />
         <Directions />
