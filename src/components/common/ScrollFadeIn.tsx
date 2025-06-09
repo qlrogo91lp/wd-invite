@@ -11,15 +11,15 @@ interface IScrollFadeInProps {
 
 export default function ScrollFadeIn({
 	children,
-	delay = 0,
-	direction = 'up'
+	// delay = 0,
+	// direction = 'up'
 }: IScrollFadeInProps) {
-	const directionOffset: Record<ScrollDirection, { y: number, x: number }> = {
-		up: { y: 50, x: 0 },
-		down: { y: -50, x: 0 },
-		left: { y: 0, x: 50 },
-		right: { y: 0, x: -50 }
-	};
+	// const directionOffset: Record<ScrollDirection, { y: number, x: number }> = {
+	// 	up: { y: 50, x: 0 },
+	// 	down: { y: -50, x: 0 },
+	// 	left: { y: 0, x: 50 },
+	// 	right: { y: 0, x: -50 }
+	// };
 
 	return (
 		<motion.div
