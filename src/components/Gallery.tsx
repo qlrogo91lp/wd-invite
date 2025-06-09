@@ -1,56 +1,100 @@
-import { useRef } from 'react';
-import ImageGallery from 'react-image-gallery';
+import { useEffect, useState } from 'react';
+import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import LightGallery from 'lightgallery/react';
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import lgZoom from 'lightgallery/plugins/zoom';
+import 'photoswipe/style.css';
+import { Gallery, Item } from 'react-photoswipe-gallery';
+import Loading from './common/Loading';
+
+interface GalleryImage {
+	original: string;
+	thumbnail: string;
+	originalAlt: string;
+	thumbnailAlt: string;
+	width: number;
+	height: number;
+}
 
 const bucketUrl = 'https://kr.object.ncloudstorage.com/gandi-cdn/pic';
 const imageCount = 34;
 
-const images = Array.from({ length: imageCount }, (_, i) => {
+const imageUrls = Array.from({ length: imageCount }, (_, i) => {
 	const fileName = `wd${i + 1}.jpg`;
 	return {
-		original: `${bucketUrl}/${fileName}`,
-		thumbnail: `${bucketUrl}/${fileName}`,
-		originalAlt: `ori_${i + 1}`,
-		thumbnailAlt: `thumb_${i + 1}`,
+		src: `${bucketUrl}/${fileName}`,
+		alt: `wd${i + 1}`,
 	};
 });
 
-export default function Gallery() {
-	const ref = useRef<any>(null);
+export default function CustomGallery() {
+	const [images, setImages] = useState<GalleryImage[]>([]);
+	const [loading, setLoading] = useState(true);
 
-	const onClickHandler = () => {
-		const activeSlide = document.querySelector('.image-gallery-slide.center') as HTMLElement;
-		const label = activeSlide?.getAttribute('aria-label');
-		const index = label ? parseInt(label.split(' ')[1]) - 1 : 0;
+	useEffect(() => {
+		const loadImages = async () => {
+			const loaded = await Promise.all(
+				imageUrls.map((img) => {
+					return new Promise((resolve) => {
+						const image = new Image();
+						image.src = img.src;
+						image.onload = () => {
+							resolve({
+								original: img.src,
+								thumbnail: img.src,
+								originalAlt: img.alt,
+								thumbnailAlt: img.alt,
+								width: image.naturalWidth,
+								height: image.naturalHeight,
+							});
+						};
+					});
+				})
+			);
+			setImages(loaded as GalleryImage[]);
+			setLoading(false);
+		};
 
-		ref.current?.openGallery(index);
-	}
+		loadImages();
+	}, []);
+
+	const renderItem = (item: ReactImageGalleryItem) => {
+		const galleryItem = item as GalleryImage;
+		return (
+			<Item
+				original={galleryItem.original}
+				thumbnail={galleryItem.thumbnail}
+				width={galleryItem.width}
+				height={galleryItem.height}
+				alt={galleryItem.originalAlt}
+			>
+				{({ ref, open }) => (
+					<img
+						ref={ref as React.Ref<HTMLImageElement>}
+						onClick={open}
+						src={galleryItem.original}
+						alt={galleryItem.originalAlt}
+						className="object-cover w-full aspect-10/11 cursor-zoom-in"
+					/>
+				)}
+			</Item>
+		);
+	};
 
 	return (
-		<section>
-			<div onClick={onClickHandler}>
-				<ImageGallery
-					items={images}
-					showPlayButton={false}
-					showFullscreenButton={false}
-				/>
-			</div>
-			<LightGallery
-				dynamic
-				dynamicEl={images.map((img) => ({
-					src: img.original,
-					thumb: img.thumbnail,
-					subHtml: img.originalAlt,
-				}))}
-				plugins={[lgZoom]}
-				closable={true}
-				ref={ref}
-			/>
-
+		<section className="relative w-full aspect-10/11">
+			{loading ? (
+				<div className="flex items-center justify-center w-full aspect-10/11">
+					<Loading />
+				</div>
+			) : (
+				<Gallery>
+					<ImageGallery
+						items={images}
+						showPlayButton={false}
+						showFullscreenButton={false}
+						renderItem={renderItem}
+					/>
+				</Gallery>
+			)}
 		</section>
 	);
 }

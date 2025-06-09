@@ -5,3 +5,12 @@
   --font-playFair: "Playfair Display", "sans-serif";
   --font-nanoSerifKr: "Noto Serif KR", "sans-serif";
 }
+.image-gallery-thumbnail {
+  @apply aspect-square overflow-hidden; /* 정사각형으로 만들기 */
+  @apply w-20 h-20;
+
+}
+
+.image-gallery-thumbnail img {
+  @apply h-full w-full object-cover; /* 이미지가 잘리더라도 채우기 */
+}
