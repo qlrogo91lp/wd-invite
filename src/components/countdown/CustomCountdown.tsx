@@ -1,6 +1,7 @@
 import Countdown from 'react-countdown';
 import TimeBox from './TimeBox';
 import Colon from './Colon';
+import ScrollFadeIn from '@components/common/ScrollFadeIn';
 
 // 날짜 설정: YYYY-MM-DD 형식
 const weddingDate = new Date('2025-09-13T12:30:00');
@@ -37,5 +38,9 @@ export default function CustomCountdown() {
 		}
 	};
 
-	return <Countdown date={weddingDate} renderer={renderer} />;
+	return (
+		<ScrollFadeIn>
+			<Countdown date={weddingDate} renderer={renderer} />
+		</ScrollFadeIn>
+	);
 };

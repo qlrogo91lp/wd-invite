@@ -1,6 +1,8 @@
+import ScrollFadeIn from './common/ScrollFadeIn';
+
 export default function FamilyNames() {
 	return (
-		<section>
+		<ScrollFadeIn>
 			<div className='w-full pb-8'>
 				<img src='https://kr.object.ncloudstorage.com/gandi-cdn/pic/wd2.jpg' alt='cover' loading='lazy' />
 			</div>
@@ -16,6 +18,6 @@ export default function FamilyNames() {
 				<p>딸</p>
 				<p>지은</p>
 			</article>
-		</section>
+		</ScrollFadeIn>
 	);
 }

@@ -22,8 +22,7 @@ export default function ScrollFadeIn({
 	};
 
 	return (
-		<motion.div
-			className='flex flex-col gap-15'
+		<motion.section
 			initial={{
 				opacity: 0,
 				...directionOffset[direction]
@@ -44,6 +43,6 @@ export default function ScrollFadeIn({
 			}}
 		>
 			{children}
-		</motion.div>
+		</motion.section>
 	);
 }
