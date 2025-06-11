@@ -7,26 +7,79 @@ import {
 	orderBy,
 	Timestamp,
 	onSnapshot,
+	deleteDoc,
+	doc,
+	updateDoc,
 } from 'firebase/firestore';
 import Loading from '../common/Loading';
 
 type Comment = {
 	id: string;
+	name: string;
 	text: string;
 	createdAt: Timestamp;
 };
 
 export default function CommentBox() {
 	const [comments, setComments] = useState<Comment[]>([]);
+	const [name, setName] = useState('');
 	const [newComment, setNewComment] = useState('');
+	const [editingId, setEditingId] = useState<string | null>(null);
+	const [editName, setEditName] = useState('');
+	const [editText, setEditText] = useState('');
 
 	const handleAddComment = async () => {
-		if (!newComment.trim()) return;
-		await addDoc(collection(db, 'comments'), {
-			text: newComment,
-			createdAt: Timestamp.now(),
-		});
-		setNewComment('');
+		if (!newComment.trim() || !name.trim()) return;
+		try {
+			await addDoc(collection(db, 'comments'), {
+				name: name,
+				text: newComment,
+				createdAt: Timestamp.now(),
+			});
+			setNewComment('');
+			setName('');
+		} catch (error) {
+			console.error('댓글 등록 실패:', error);
+			alert('댓글 등록에 실패했습니다. 다시 시도해주세요.');
+		}
+	};
+
+	const handleDeleteComment = async (id: string) => {
+		if (!confirm('정말로 이 댓글을 삭제하시겠습니까?')) return;
+		try {
+			await deleteDoc(doc(db, 'comments', id));
+		} catch (error) {
+			console.error('댓글 삭제 실패:', error);
+			alert('댓글 삭제에 실패했습니다. 다시 시도해주세요.');
+		}
+	};
+
+	const handleStartEdit = (comment: Comment) => {
+		setEditingId(comment.id);
+		setEditName(comment.name);
+		setEditText(comment.text);
+	};
+
+	const handleCancelEdit = () => {
+		setEditingId(null);
+		setEditName('');
+		setEditText('');
+	};
+
+	const handleUpdateComment = async (id: string) => {
+		if (!editText.trim() || !editName.trim()) return;
+		try {
+			await updateDoc(doc(db, 'comments', id), {
+				name: editName,
+				text: editText,
+			});
+			setEditingId(null);
+			setEditName('');
+			setEditText('');
+		} catch (error) {
+			console.error('댓글 수정 실패:', error);
+			alert('댓글 수정에 실패했습니다. 다시 시도해주세요.');
+		}
 	};
 
 	useEffect(() => {
@@ -47,26 +100,82 @@ export default function CommentBox() {
 
 	return (
 		<Suspense fallback={<Loading />}>
-			<section className="max-w-md mx-auto mt-10 p-4 border rounded shadow">
-				<h2 className="text-xl font-bold mb-4">💬 실시간 댓글</h2>
-				<div className="flex gap-2 mb-4">
+			<section className="p-4">
+				<h2 className="text-xl font-bold mb-6 text-center">방명록</h2>
+				<div className='flex flex-col gap-2 mb-4'>
+					<div className="flex gap-2">
+						<input
+							type="text"
+							className='border border-gray-300 p-2 rounded'
+							placeholder='이름'
+							value={name}
+							onChange={(e) => setName(e.target.value)}
+						/>
+						<button onClick={handleAddComment} className="bg-gray-300 text-white px-4 py-2 rounded">
+							등록
+						</button>
+					</div>
 					<input
-						className="border flex-1 p-2 rounded"
+						className="border border-gray-300 p-2 rounded"
 						placeholder="댓글을 입력하세요"
 						value={newComment}
 						onChange={(e) => setNewComment(e.target.value)}
 					/>
-					<button
-						onClick={handleAddComment}
-						className="bg-blue-500 text-white px-4 py-2 rounded"
-					>
-						등록
-					</button>
 				</div>
 				<ul className="space-y-2">
 					{comments.map((c) => (
-						<li key={c.id} className="border p-2 rounded">
-							{c.text}
+						<li key={c.id} className="border p-4 rounded bg-[#f9f6fc] border-[#dddddd]">
+							{editingId === c.id ? (
+								<div className='flex flex-col gap-2'>
+									<input
+										type="text"
+										className='border border-gray-300 p-2 rounded'
+										value={editName}
+										onChange={(e) => setEditName(e.target.value)}
+									/>
+									<input
+										className="border border-gray-300 p-2 rounded"
+										value={editText}
+										onChange={(e) => setEditText(e.target.value)}
+									/>
+									<div className='flex justify-end gap-2'>
+										<button
+											onClick={() => handleUpdateComment(c.id)}
+											className="text-sm text-blue-500"
+										>
+											저장
+										</button>
+										<button
+											onClick={handleCancelEdit}
+											className="text-sm text-gray-500"
+										>
+											취소
+										</button>
+									</div>
+								</div>
+							) : (
+								<div className='flex flex-col gap-2'>
+									<div className='flex justify-between'>
+										<p className='text-sm'>{c.name}</p>
+										<div className='flex gap-2'>
+											<button
+												onClick={() => handleStartEdit(c)}
+												className='text-sm text-gray-500'
+											>
+												수정
+											</button>
+											<button
+												onClick={() => handleDeleteComment(c.id)}
+												className='text-sm text-gray-500'
+											>
+												삭제
+											</button>
+										</div>
+									</div>
+									<p className='text-sm'>{c.text}</p>
+									<p className='text-xs text-gray-500'>{c.createdAt.toDate().toLocaleString()}</p>
+								</div>
+							)}
 						</li>
 					))}
 				</ul>
