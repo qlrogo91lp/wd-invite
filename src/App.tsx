@@ -6,6 +6,7 @@ import FamilyNames from '@components/FamliyNames'
 import Footer from '@components/Footer'
 import Directions from '@components/map/Directions'
 import CustomGallery from '@components/CustomGallery'
+import ShareButton from '@components/ShareButton'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <CustomCountdown />
       <Calendar />
       <Directions />
+      <ShareButton />
       <Footer />
     </main>
   )
