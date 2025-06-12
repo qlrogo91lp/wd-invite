@@ -11,12 +11,12 @@ export default function FamilyNames() {
 				<p>·</p>
 				<p>정미자<span className='text-sm'>의</span></p>
 				<p>아들</p>
-				<p>윤재</p>
+				<p className='text-lg'>윤재</p>
 				<p>이창수</p>
 				<p>·</p>
 				<p>신명숙<span className='text-sm'>의</span></p>
 				<p>딸</p>
-				<p>지은</p>
+				<p className='text-lg'>지은</p>
 			</article>
 		</ScrollFadeIn>
 	);
