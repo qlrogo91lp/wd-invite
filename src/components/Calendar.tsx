@@ -13,7 +13,6 @@ export default function Calendar() {
 	return (
 		<ScrollFadeIn>
 			<div className='flex flex-col items-center w-full'>
-				<h2 className="mb-10 tracking-wide text-purple-400">Calendar</h2>
 				<p className="mb-2 text-lg font-semibold text-black">
 					2025년 9월 13일 토요일 오후 12시 30분
 				</p>

@@ -20,7 +20,7 @@ export default function CustomCountdown() {
 			return <p>결혼식 날입니다! 🎉</p>;
 		} else {
 			return (
-				<section className="w-full font-light text-center">
+				<section className="w-full text-center">
 					<div className="flex justify-center gap-2">
 						<TimeBox label="Days" value={days} />
 						<Colon />

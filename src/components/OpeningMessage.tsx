@@ -5,8 +5,6 @@ export default function OpeningMessage() {
 	return (
 		<ScrollFadeIn>
 			<div className='flex flex-col items-center justify-center p-6'>
-				<p className='font-[playFair]'>Invite you</p>
-				<SpaceBlock height='h-10'/>
 				<p>사소한 일에도</p>
 				<p>웃을 수 있고</p>
 				<SpaceBlock />

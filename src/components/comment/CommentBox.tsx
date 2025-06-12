@@ -101,22 +101,21 @@ export default function CommentBox() {
 	return (
 		<Suspense fallback={<Loading />}>
 			<section className="p-4">
-				<h2 className="text-xl font-bold mb-6 text-center">방명록</h2>
 				<div className='flex flex-col gap-2 mb-4'>
 					<div className="flex gap-2">
 						<input
 							type="text"
-							className='border border-gray-300 p-2 rounded'
+							className='p-2 border border-gray-300 rounded'
 							placeholder='이름'
 							value={name}
 							onChange={(e) => setName(e.target.value)}
 						/>
-						<button onClick={handleAddComment} className="bg-gray-300 text-white px-4 py-2 rounded">
+						<button onClick={handleAddComment} className="px-4 py-2 text-white bg-gray-300 rounded">
 							등록
 						</button>
 					</div>
 					<input
-						className="border border-gray-300 p-2 rounded"
+						className="p-2 border border-gray-300 rounded"
 						placeholder="댓글을 입력하세요"
 						value={newComment}
 						onChange={(e) => setNewComment(e.target.value)}
@@ -129,12 +128,12 @@ export default function CommentBox() {
 								<div className='flex flex-col gap-2'>
 									<input
 										type="text"
-										className='border border-gray-300 p-2 rounded'
+										className='p-2 border border-gray-300 rounded'
 										value={editName}
 										onChange={(e) => setEditName(e.target.value)}
 									/>
 									<input
-										className="border border-gray-300 p-2 rounded"
+										className="p-2 border border-gray-300 rounded"
 										value={editText}
 										onChange={(e) => setEditText(e.target.value)}
 									/>

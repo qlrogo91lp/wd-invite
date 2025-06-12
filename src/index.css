@@ -4,6 +4,7 @@
   --font-merriweather: "Merriweather", "sans-serif";
   --font-playFair: "Playfair Display", "sans-serif";
   --font-nanoSerifKr: "Noto Serif KR", "sans-serif";
+  --font-dancingScript: "Dancing Script", "sans-serif";
 }
 .image-gallery-thumbnail {
   @apply aspect-square overflow-hidden; /* 정사각형으로 만들기 */
