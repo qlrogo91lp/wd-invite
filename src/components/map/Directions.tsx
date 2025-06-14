@@ -7,6 +7,7 @@ import { FaBus } from "react-icons/fa";
 import { FaSubway } from "react-icons/fa";
 import { FaCar } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa";
+import TmapLauncher from './TmapLauncher';
 
 export const LOCATION_X = 37.5050847;
 export const LOCATION_Y = 127.0343736;
@@ -25,6 +26,7 @@ export default function Directions() {
 				<article className='flex justify-center gap-5'>
 					<NaverMapLauncher />
 					<KakaoMapLauncher />
+					<TmapLauncher />
 				</article>
 				<article className='flex flex-col items-center justify-center gap-2 px-5 text-center text-md'>
 					<WayTitle title='버스' icon={<FaBus size={25} />} />
@@ -54,6 +56,10 @@ export default function Directions() {
 					<p>7번 출구로 나와 정면방향으로 150M 도보 후 우측 건물</p>
 					<WayTitle title='자가용' icon={<FaCar size={25} />} />
 					<p>동호대교 방면 동호대교 남단에서 3호선 압구정역, 7호선 학동역을 지나 차병원 사거리에서 2호선 역삼역 방면으로 200m 직진 후 우측 건물</p>
+					<WayTitle title='주차안내' icon={<FaCar size={25} />} />
+					<p>건물 내 주차공간이 협소하오니 대중교통을 이용해 주시기 바랍니다.</p>
+					<p>외부주차장 2시간 30분 무료 (셔틀운영)</p>
+					<p>웨딩홀 건물 앞</p>
 				</article>
 			</div>
 		</ScrollFadeIn>
