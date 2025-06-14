@@ -72,7 +72,7 @@ export default function CustomGallery() {
 						onClick={open}
 						src={galleryItem.original}
 						alt={galleryItem.originalAlt}
-						className="object-cover w-full aspect-10/11 cursor-zoom-in"
+						className="object-cover w-full aspect-10/11"
 					/>
 				)}
 			</Item>
@@ -86,7 +86,14 @@ export default function CustomGallery() {
 					<Loading />
 				</div>
 			) : (
-				<Gallery>
+				<Gallery
+					options={{
+						zoom: false,
+						pinchToClose: false,
+						wheelToZoom: false,
+						doubleTapAction: false,
+					}}
+				>
 					<ImageGallery
 						items={images}
 						showPlayButton={false}
