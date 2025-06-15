@@ -4,7 +4,7 @@ export default function FamilyNames() {
 	return (
 		<ScrollFadeIn>
 			<div className='w-full pb-10'>
-				<img src='https://kr.object.ncloudstorage.com/gandi-cdn/pic/wd19.jpg' alt='cover' loading='lazy' />
+				<img src='https://kr.object.ncloudstorage.com/gandi-cdn/pic/wd10.webp' alt='cover' loading='lazy' />
 			</div>
 			<article className='w-full grid grid-cols-[1fr_15px_1fr_1fr_1fr] gap-1 text-center px-15'>
 				<p className='font-bold'>김희택</p>
