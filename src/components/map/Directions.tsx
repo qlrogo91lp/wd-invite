@@ -11,7 +11,7 @@ import TmapLauncher from './TmapLauncher';
 
 export const LOCATION_X = 37.5050847;
 export const LOCATION_Y = 127.0343736;
-export const LOCATION_NAME = '더채플 앳 논현';
+export const LOCATION_NAME = '더채플앳논현';
 
 export default function Directions() {
 	return (

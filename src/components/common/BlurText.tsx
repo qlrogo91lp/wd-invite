@@ -56,16 +56,13 @@ export default function BlurText({
 			([entry]) => {
 				if (entry.isIntersecting) {
 					setInView(true);
-					if (ref.current) {
-						observer.unobserve(ref.current);
-					}
+					if (ref.current) observer.unobserve(ref.current);
 				}
 			},
 			{ threshold, rootMargin }
 		);
 		observer.observe(ref.current);
 		return () => observer.disconnect();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [threshold, rootMargin]);
 
 	const defaultFrom = useMemo(
