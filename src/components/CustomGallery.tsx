@@ -15,7 +15,7 @@ interface GalleryImage {
 }
 
 const bucketUrl = 'https://kr.object.ncloudstorage.com/gandi-cdn/pic';
-const imageCount = 34;
+const imageCount = 30;
 
 const imageUrls = Array.from({ length: imageCount }, (_, i) => {
 	const fileName = `wd${i + 1}.jpg`;
