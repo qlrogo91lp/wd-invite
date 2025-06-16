@@ -15,14 +15,14 @@ export default function Header() {
 				src='https://kr.object.ncloudstorage.com/gandi-cdn/pic/wd13.webp'
 				alt='cover'
 				loading='lazy'
-				className='w-full h-auto'
+				className='w-full h-auto rounded-t-full mt-20 px-5'
 				onLoad={() => setImgLoaded(true)}
 			/>
 			{imgLoaded && (
-				<div className='absolute inset-0 z-20 flex items-center justify-center -top-40'>
+				<div className='absolute inset-0 z-20 flex items-center justify-center'>
 					<BlurText
 						text='We are getting married'
-						className='text-4xl font-bold text-white'
+						className='text-3xl font-bold text-white'
 					/>
 				</div>
 			)}
