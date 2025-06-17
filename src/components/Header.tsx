@@ -1,13 +1,15 @@
 import { useState } from 'react';
+
 import Edge from '@svgs/bottomEdge.svg';
 import BlurText from '@components/common/BlurText';
+import Sakura from './common/Sakura';
 
 export default function Header() {
 	const [imgLoaded, setImgLoaded] = useState(false);
-
 	return (
 		<>
 			<header className='relative flex flex-col'>
+				<Sakura />
 				<div className='flex flex-col items-center justify-center mt-5 gap-3'>
 					<p className='font-merriweather text-[9px]'>WEDDING INVIATION</p>
 					<div className='z-10 flex justify-center w-full gap-2'>
