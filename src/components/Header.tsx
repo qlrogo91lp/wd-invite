@@ -1,38 +1,47 @@
 import { useState } from 'react';
+
 import Edge from '@svgs/bottomEdge.svg';
 import BlurText from '@components/common/BlurText';
+import Sakura from './common/Sakura';
 
 export default function Header() {
 	const [imgLoaded, setImgLoaded] = useState(false);
-
 	return (
-		<header className='relative flex flex-col'>
-			<div className='absolute z-10 flex justify-between w-full p-4 bg-gradient-to-b from-black/70'>
-				<p className='text-white font-merriweather text-l'>YOONJAE</p>
-				<p className='text-white font-merriweather text-l'>JIEUN</p>
-			</div>
-			<img
-				src='https://kr.object.ncloudstorage.com/gandi-cdn/pic/wd13.webp'
-				alt='cover'
-				loading='lazy'
-				className='w-full h-auto'
-				onLoad={() => setImgLoaded(true)}
-			/>
-			{imgLoaded && (
-				<div className='absolute inset-0 z-20 flex items-center justify-center -top-40'>
-					<BlurText
-						text='We are getting married'
-						className='text-4xl font-bold text-white'
-					/>
+		<>
+			<header className='relative flex flex-col'>
+				<Sakura />
+				<div className='flex flex-col items-center justify-center mt-5 gap-3'>
+					<p className='font-merriweather text-[9px]'>WEDDING INVIATION</p>
+					<div className='z-10 flex justify-center w-full gap-2'>
+						<p className='font-merriweather text-sm'>김윤재</p>
+						<span className='text-xs'>🖤</span>
+						<p className='font-merriweather text-sm'>이지은</p>
+					</div>
 				</div>
-			)}
-			<aside className='absolute z-10 flex flex-col items-center justify-center w-full bottom-15'>
-				<p className='mb-5 text-white font-merriweather text-l'>September 13, 2025</p>
-				<p className='text-white text-[0.5rem] tracking-tight'>
-					We, who have similar smiles, are getting married.
-				</p>
+				<img
+					src='https://kr.object.ncloudstorage.com/gandi-cdn/pic/wd13.webp'
+					alt='cover'
+					loading='lazy'
+					className='w-full h-auto rounded-t-full mt-5 px-5'
+					onLoad={() => setImgLoaded(true)}
+				/>
+				{imgLoaded && (
+					<div className='absolute z-20 bottom-[10%] w-full flex justify-center'>
+						<BlurText
+							text='We are getting married'
+							className='text-3xl font-bold text-white'
+						/>
+					</div>
+				)}
+				<img src={Edge} alt='edge' className='absolute bottom-[-1px]' />
+			</header>
+			<aside className='flex justify-center mt-5'>
+				<div className='flex flex-col items-center gap-2'>
+					<p className='text-lg font-dancingScript text-gray-600'>We're getting married</p>
+					<p className='text-sm mt-7'>2025년 9월 13일 토요일 오후 12시 30분</p>
+					<p className='text-sm'>더채플 앳 논현 5층 라메르홀</p>
+				</div>
 			</aside>
-			<img src={Edge} alt='edge' className='absolute bottom-[-1px]' />
-		</header>
+		</>
 	);
 }

@@ -10,7 +10,7 @@ import ShareButton from '@components/ShareButton'
 import CommentBox from '@components/comment/CommentBox'
 import Title from '@components/common/Title'
 
-function App() {
+export default function App() {
   return (
     <main className='flex flex-col max-w-[440px] mx-auto gap-15'>
       <Header />
@@ -31,5 +31,3 @@ function App() {
     </main>
   )
 }
-
-export default App
