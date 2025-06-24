@@ -99,6 +99,7 @@ export default function CustomGallery() {
 						showPlayButton={false}
 						showFullscreenButton={false}
 						renderItem={renderItem}
+						autoPlay
 					/>
 				</Gallery>
 			)}

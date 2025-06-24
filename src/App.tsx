@@ -9,6 +9,7 @@ import CustomGallery from '@components/CustomGallery'
 import ShareButton from '@components/ShareButton'
 import CommentBox from '@components/comment/CommentBox'
 import Title from '@components/common/Title'
+import Description from '@components/Description.tsx';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
       <Calendar />
       <Title title='Location' />
       <Directions />
+      <Description/>
       <ShareButton />
       <Title title='Guestbook' subTitle='방명록'/> 
       <CommentBox />
