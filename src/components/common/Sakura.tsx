@@ -6,13 +6,13 @@ export default function Sakura() {
       onInit={({ confetti }) => {
         const interval = setInterval(() => {
           confetti({
-            particleCount: 4,
+            particleCount: 1,
             angle: 120,
             spread: 100,
             startVelocity: 30,
             origin: { x: Math.random(), y: 0 },
             colors: ['#FFB7C5', '#FFA6C9', '#FFDDEE'],
-            gravity: 0.6,
+            gravity: 1,
             ticks: 500,
             scalar: 1.5,
             drift: 0.5,
