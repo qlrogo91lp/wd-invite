@@ -5,7 +5,13 @@
   --font-playFair: "Playfair Display", "sans-serif";
   --font-nanoSerifKr: "Noto Serif KR", "sans-serif";
   --font-dancingScript: "Dancing Script", "sans-serif";
+  --font-gowunDodum: "Gowun Dodum", "sans-serif";
 }
+
+body {
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
 .image-gallery-thumbnail {
   @apply aspect-square overflow-hidden; /* 정사각형으로 만들기 */
   @apply w-20 h-20;
