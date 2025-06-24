@@ -102,10 +102,11 @@ export default function CommentBox() {
 		<Suspense fallback={<Loading />}>
 			<section className="p-4">
 				<div className='flex flex-col gap-2 mb-4'>
-					<div className="flex gap-2">
+					<div className="flex gap-2 w-full justify-start">
 						<input
 							type="text"
-							className='p-2 border border-gray-300 rounded'
+							name="name"
+							className='p-2 border border-gray-300 rounded w-1/3'
 							placeholder='이름'
 							value={name}
 							onChange={(e) => setName(e.target.value)}
@@ -115,6 +116,7 @@ export default function CommentBox() {
 						</button>
 					</div>
 					<input
+						name='comment'
 						className="p-2 border border-gray-300 rounded"
 						placeholder="댓글을 입력하세요"
 						value={newComment}
