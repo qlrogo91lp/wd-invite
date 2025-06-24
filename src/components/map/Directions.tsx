@@ -28,7 +28,7 @@ export default function Directions() {
 					<KakaoMapLauncher />
 					<TmapLauncher />
 				</article>
-				<article className='flex flex-col items-center justify-center gap-2 px-5 text-center text-sm'>
+				<article className='flex flex-col items-start justify-center gap-2 px-5 text-center text-sm text-left'>
 					<WayTitle title='버스' icon={<FaBus size={25} />} />
 					<div className='flex items-center gap-2'>
 						<FaCircle color='rgb(56, 109, 232)' size={10} />
