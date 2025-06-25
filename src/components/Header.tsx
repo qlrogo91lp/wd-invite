@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
-import Edge from '@svgs/bottomEdge.svg';
+// import Edge from '@svgs/bottomEdge.svg';
 import BlurText from '@components/common/BlurText';
 import Sakura from './common/Sakura';
+import WaveAnimation from '@components/common/WaveAnimation.tsx';
 
 export default function Header() {
 	const [imgLoaded, setImgLoaded] = useState(false);
@@ -33,7 +34,8 @@ export default function Header() {
 						/>
 					</div>
 				)}
-				<img src={Edge} alt='edge' className='absolute bottom-[-1px]' />
+				{/*<img src={Edge} alt='edge' className='absolute bottom-[-1px]' />*/}
+				<WaveAnimation />
 			</header>
 			<aside className='flex justify-center mt-5'>
 				<div className='flex flex-col items-center gap-2'>

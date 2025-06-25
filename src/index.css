@@ -6,6 +6,17 @@
   --font-nanoSerifKr: "Noto Serif KR", "sans-serif";
   --font-dancingScript: "Dancing Script", "sans-serif";
   --font-gowunDodum: "Gowun Dodum", "sans-serif";
+
+  --animate-wave: 'wave 10s linear infinite';
+
+  @keyframes wave {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-160%);
+    }
+  }
 }
 
 body {
@@ -29,3 +40,9 @@ body {
 .image-gallery-thumbnail:focus {
   border: 3px solid #d8b4fe !important;
 }
+
+/*@layer components {*/
+/*  .parallax > use {*/
+/*    animation: wave 10s linear infinite;*/
+/*  }*/
+/*}*/
