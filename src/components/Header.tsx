@@ -30,7 +30,7 @@ export default function Header() {
 					<div className='absolute z-20 bottom-[10%] w-full flex justify-center'>
 						<BlurText
 							text='We are getting married'
-							className='text-3xl font-bold text-white'
+							className='text-3xl font-bold text-white font-playFair'
 						/>
 					</div>
 				)}
