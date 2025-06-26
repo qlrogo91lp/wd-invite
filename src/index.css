@@ -19,10 +19,9 @@
   }
 }
 
-html, body {
+body {
   font-family: 'Gowun Dodum', sans-serif;
-  touch-action: manipulation;
-  overscroll-behavior: none;
+  touch-action: pan-x pan-y;
 }
 
 .image-gallery-thumbnail {
