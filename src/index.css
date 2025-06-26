@@ -21,7 +21,6 @@
 
 body {
   font-family: 'Gowun Dodum', sans-serif;
-  touch-action: pan-x pan-y;
 }
 
 .image-gallery-thumbnail {
