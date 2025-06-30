@@ -10,6 +10,7 @@ import ShareButton from '@components/ShareButton'
 import CommentBox from '@components/comment/CommentBox'
 import Title from '@components/common/Title'
 import Description from '@components/Description.tsx';
+import Account from '@components/Account.tsx';
 
 export default function App() {
   return (
@@ -27,6 +28,8 @@ export default function App() {
       <Directions />
       <Description/>
       <ShareButton />
+      <Title title='Contact' subTitle='마음 전하실 곳' />
+      <Account />
       <Title title='Guestbook' subTitle='방명록'/> 
       <CommentBox />
       <Footer />
