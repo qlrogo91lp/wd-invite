@@ -72,7 +72,7 @@ export default function CustomGallery() {
 						onClick={open}
 						src={galleryItem.original}
 						alt={galleryItem.originalAlt}
-						className="object-cover w-full aspect-10/11"
+						className="object-cover w-full aspect-10/11 touch-manipulation"
 					/>
 				)}
 			</Item>
