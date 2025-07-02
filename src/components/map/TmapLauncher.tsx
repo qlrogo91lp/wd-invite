@@ -12,8 +12,9 @@ export default function TmapLauncher() {
 	}
 
 	return (
-		<button onClick={onClickHandler}>
-			<img src={Tmap} alt='tmap' width={40}/>
+		<button type='button' onClick={onClickHandler} className='flex gap-2 items-center cursor-pointer'>
+			<img src={Tmap} alt='tmap' width={20}/>
+			<p className='text-sm'>T맵</p>
 		</button>
 	);
 }
