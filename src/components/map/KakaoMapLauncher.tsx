@@ -19,8 +19,9 @@ export default function KakaoMapLauncher() {
 	}
 
 	return (
-		<button onClick={onClickHandler}>
-			<img src={Kakao} alt='kakao-map' width={40} />
+		<button type='button' onClick={onClickHandler} className='flex gap-2 items-center cursor-pointer'>
+			<img src={Kakao} alt='kakao-map' width={20} />
+			<p className='text-sm'>카카오</p>
 		</button>
 	);
 }

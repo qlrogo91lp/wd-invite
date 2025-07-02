@@ -13,6 +13,10 @@ export const LOCATION_X = 37.5050847;
 export const LOCATION_Y = 127.0343736;
 export const LOCATION_NAME = '더채플앳논현';
 
+const Divider = () => {
+	return <div className='w-px h-[20px] border-r-1 border-gray-300 mx-px' />;
+}
+
 export default function Directions() {
 	return (
 		<ScrollFadeIn>
@@ -23,9 +27,11 @@ export default function Directions() {
 					<p>더채플 앳 논현 5층 라메르홀</p>
 				</hgroup>
 				<NaverMap />
-				<article className='flex justify-center gap-5'>
+				<article className='flex justify-evenly border border-gray-300 rounded-lg px-5 py-4 h-full'>
 					<NaverMapLauncher />
+					<Divider />
 					<KakaoMapLauncher />
+					<Divider />
 					<TmapLauncher />
 				</article>
 				<article className='flex flex-col items-start justify-center gap-2 px-5 text-center text-sm text-left'>
