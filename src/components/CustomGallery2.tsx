@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import 'photoswipe/style.css';
 import clsx from 'clsx';
