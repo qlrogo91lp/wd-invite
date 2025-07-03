@@ -23,24 +23,6 @@ body {
   font-family: 'Gowun Dodum', sans-serif;
 }
 
-.image-gallery-thumbnail {
-  @apply aspect-square overflow-hidden; /* 정사각형으로 만들기 */
-  @apply w-20 h-20;
-  vertical-align: top;
-}
-
-.image-gallery-thumbnail img {
-  @apply h-full w-full object-cover; /* 이미지가 잘리더라도 채우기 */
-}
-
-.image-gallery-thumbnail.active {
-  border: 3px solid #d8b4fe !important;
-}
-
-.image-gallery-thumbnail:focus {
-  border: 3px solid #d8b4fe !important;
-}
-
 @layer components {
   .parallax > use {
     animation: wave 10s linear infinite;

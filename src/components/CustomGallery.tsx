@@ -1,108 +1,73 @@
 import { useEffect, useState } from 'react';
-import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
-import 'react-image-gallery/styles/css/image-gallery.css';
-import 'photoswipe/style.css';
-import { Gallery, Item } from 'react-photoswipe-gallery';
-import Loading from './common/Loading';
-
-interface GalleryImage {
-	original: string;
-	thumbnail: string;
-	originalAlt: string;
-	thumbnailAlt: string;
-	width: number;
-	height: number;
-}
+import clsx from 'clsx';
 
 const bucketUrl = 'https://kr.object.ncloudstorage.com/gandi-cdn/pic';
 const imageCount = 32;
 
 const imageUrls = Array.from({ length: imageCount }, (_, i) => {
-	const fileName = `wd${i + 1}.webp`;
-	return {
-		src: `${bucketUrl}/${fileName}`,
-		alt: `wd${i + 1}`,
-	};
+  const fileName = `wd${i + 1}.webp`;
+  return {
+    src: `${bucketUrl}/${fileName}`,
+    alt: `wd${i + 1}`,
+  };
 });
 
+type GalleryImage = {
+  src: string;
+  alt: string;
+  isLandscape: boolean;
+  width: number;
+  height: number;
+};
+
 export default function CustomGallery() {
-	const [images, setImages] = useState<GalleryImage[]>([]);
-	const [loading, setLoading] = useState(true);
+  const [images, setImages] = useState<GalleryImage[]>([]);
 
-	useEffect(() => {
-		const loadImages = async () => {
-			const loaded = await Promise.all(
-				imageUrls.map((img) => {
-					return new Promise((resolve) => {
-						const image = new Image();
-						image.src = img.src;
-						image.onload = () => {
-							resolve({
-								original: img.src,
-								thumbnail: img.src,
-								originalAlt: img.alt,
-								thumbnailAlt: img.alt,
-								width: image.naturalWidth,
-								height: image.naturalHeight,
-							});
-						};
-					});
-				})
-			);
-			setImages(loaded as GalleryImage[]);
-			setLoading(false);
-		};
+  useEffect(() => {
+    Promise.all(
+      imageUrls.map(
+        (img) =>
+          new Promise<GalleryImage>((resolve) => {
+            const image = new window.Image();
+            image.src = img.src;
+            image.onload = () => {
+              resolve({
+                ...img,
+                isLandscape: image.width >= image.height,
+                width: image.width,
+                height: image.height,
+              });
+            };
+            image.onerror = () => {
+              resolve({
+                ...img,
+                isLandscape: false,
+                width: 1,
+                height: 2,
+              });
+            };
+          }),
+      ),
+    ).then(setImages);
+  }, []);
 
-		loadImages();
-	}, []);
+  return (
+    <section className="overflow-x-auto overflow-y-hidden scrollbar-hide touch-pan-x w-full px-3">
+      <div className="grid grid-rows-2 gap-2 mb-1 grid-flow-col min-w-max">
+        {images.map((img) => (
+          <img
+            key={img.src}
+            src={img.src}
+            alt={img.alt}
+            className={clsx(
+              'block rounded-lg bg-[#eee] flex-none object-cover w-[180px]',
+              img.isLandscape ? 'h-[110px]' : 'h-[220px]',
+            )}
+            loading="lazy"
+          />
+        ))}
+      </div>
 
-	const renderItem = (item: ReactImageGalleryItem) => {
-		const galleryItem = item as GalleryImage;
-		return (
-			<Item
-				original={galleryItem.original}
-				thumbnail={galleryItem.thumbnail}
-				width={galleryItem.width}
-				height={galleryItem.height}
-				alt={galleryItem.originalAlt}
-			>
-				{({ ref, open }) => (
-					<img
-						ref={ref as React.Ref<HTMLImageElement>}
-						onClick={open}
-						src={galleryItem.original}
-						alt={galleryItem.originalAlt}
-						className="object-cover w-full aspect-10/11 touch-manipulation"
-					/>
-				)}
-			</Item>
-		);
-	};
-
-	return (
-		<section className="relative w-full aspect-10/11">
-			{loading ? (
-				<div className="flex items-center justify-center w-full aspect-10/11">
-					<Loading />
-				</div>
-			) : (
-				<Gallery
-					options={{
-						zoom: false,
-						pinchToClose: false,
-						wheelToZoom: false,
-						doubleTapAction: false,
-					}}
-				>
-					<ImageGallery
-						items={images}
-						showPlayButton={false}
-						showFullscreenButton={false}
-						renderItem={renderItem}
-						autoPlay
-					/>
-				</Gallery>
-			)}
-		</section>
-	);
+    </section>
+  );
 }
