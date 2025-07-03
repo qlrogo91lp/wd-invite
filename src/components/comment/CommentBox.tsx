@@ -111,7 +111,7 @@ export default function CommentBox() {
 							value={name}
 							onChange={(e) => setName(e.target.value)}
 						/>
-						<button onClick={handleAddComment} className="px-4 py-2 text-white bg-gray-300 rounded">
+						<button type='button' onClick={handleAddComment} className="px-4 py-2 text-white bg-gray-300 rounded">
 							등록
 						</button>
 					</div>
@@ -141,12 +141,14 @@ export default function CommentBox() {
 									/>
 									<div className='flex justify-end gap-2'>
 										<button
+											type='button'
 											onClick={() => handleUpdateComment(c.id)}
 											className="text-sm text-blue-500"
 										>
 											저장
 										</button>
 										<button
+											type='button'
 											onClick={handleCancelEdit}
 											className="text-sm text-gray-500"
 										>
@@ -160,12 +162,14 @@ export default function CommentBox() {
 										<p className='text-sm'>{c.name}</p>
 										<div className='flex gap-2'>
 											<button
+												type='button'
 												onClick={() => handleStartEdit(c)}
 												className='text-sm text-gray-500'
 											>
 												수정
 											</button>
 											<button
+												type='button'
 												onClick={() => handleDeleteComment(c.id)}
 												className='text-sm text-gray-500'
 											>

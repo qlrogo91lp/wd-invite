@@ -20,8 +20,9 @@ export default function NaverMapLauncher() {
 	};
 
 	return (
-		<button onClick={onClickHandler}>
-			<img src={Naver} alt='naver-map' width={40}/>
+		<button type='button' onClick={onClickHandler} className='flex gap-2 items-center cursor-pointer'>
+			<img src={Naver} alt='naver-map' width={20}/>
+			<p className='text-sm'>네이버</p>
 		</button>
 	);
 }
