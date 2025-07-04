@@ -37,3 +37,12 @@ body {
     animation-delay: 5s;
   }
 }
+
+@layer utilities {
+  .scrollbar-hide {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
+  }
+}
