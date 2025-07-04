@@ -1,4 +1,5 @@
 import { GrPrevious, GrNext } from 'react-icons/gr';
+import { IoMdClose } from "react-icons/io";
 import { motion } from 'framer-motion';
 
 type Props = {
@@ -6,9 +7,10 @@ type Props = {
   imgAlt: string;
   onPrev?: () => void;
   onNext?: () => void;
+  onClose?: () => void;
 }
 
-export default function ImageDetailItem({ imgSrc, imgAlt, onPrev, onNext }: Props) {
+export default function ImageDetailItem({ imgSrc, imgAlt, onPrev, onNext, onClose }: Props) {
   const onPrevHandler = () => {
     if (onPrev) onPrev();
   };
@@ -19,6 +21,15 @@ export default function ImageDetailItem({ imgSrc, imgAlt, onPrev, onNext }: Prop
 
   return (
     <article className="relative">
+      <motion.button
+        whileTap={{ scale: 0.9 }}
+        className='absolute -top-10 right-0 z-100'
+      >
+        <span
+          onClick={onClose}>
+          <IoMdClose size={35} color="white" />
+        </span>
+      </motion.button>
       {onPrev && (
         <motion.button
           whileTap={{ scale: 0.9 }}

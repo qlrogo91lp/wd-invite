@@ -103,6 +103,7 @@ export default function CustomGallery() {
             imgAlt={modalImage.alt}
             onPrev={prev ? onClickPrev : undefined}
             onNext={next ? onClickNext : undefined}
+            onClose={() => setModalImage(null)}
           />}
       </Modal>
     </section>
