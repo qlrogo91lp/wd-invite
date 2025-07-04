@@ -5,7 +5,7 @@ import Calendar from '@components/Calendar';
 import FamilyNames from '@components/FamliyNames';
 import Footer from '@components/Footer';
 import Directions from '@components/map/Directions';
-import CustomGallery from '@components/CustomGallery2';
+import CustomGallery from '@components/gallery/CustomGallery.tsx';
 import ShareButton from '@components/ShareButton';
 import CommentBox from '@components/comment/CommentBox';
 import Title from '@components/common/Title';
