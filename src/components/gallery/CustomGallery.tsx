@@ -4,7 +4,7 @@ import Modal from '@components/common/Modal.tsx';
 import ImageDetailItem from '@components/gallery/ImageDetailItem.tsx';
 
 const bucketUrl = 'https://kr.object.ncloudstorage.com/gandi-cdn/pic';
-const imageCount = 32;
+const imageCount = 20;
 
 const imageUrls = Array.from({ length: imageCount }, (_, i) => {
   const fileName = `wd${i + 1}.webp`;
@@ -13,6 +13,24 @@ const imageUrls = Array.from({ length: imageCount }, (_, i) => {
     alt: `wd${i + 1}`,
   };
 });
+
+function getColumns(images: GalleryImage[]) {
+  return images.reduce<GalleryImage[][]>((columns, img, idx) => {
+    const prev = images[idx - 1];
+    if (
+      img.isLandscape &&
+      prev?.isLandscape &&
+      columns[columns.length - 1]?.length === 1
+    ) {
+      // 이전 column에 추가
+      columns[columns.length - 1].push(img);
+    } else {
+      // 새로운 column 생성
+      columns.push([img]);
+    }
+    return columns;
+  }, []);
+}
 
 type GalleryImage = {
   src: string;
@@ -27,6 +45,8 @@ export default function CustomGallery() {
   const [modalImage, setModalImage] = useState<GalleryImage | null>(null);
   const [prev, setPrev] = useState<number | null>(null);
   const [next, setNext] = useState<number | null>(null);
+
+  const columns = getColumns(images);
 
   useEffect(() => {
     Promise.all(
@@ -82,18 +102,27 @@ export default function CustomGallery() {
   return (
     <section className="overflow-x-auto overflow-y-hidden scrollbar-hide touch-pan-x w-full px-3 scrollbar-hide">
       <div className="grid grid-rows-2 gap-2 mb-1 grid-flow-col min-w-max">
-        {images.map((img, index) => (
-          <img
-            key={img.src}
-            src={img.src}
-            alt={img.alt}
-            className={clsx(
-              'block rounded-lg bg-[#eee] flex-none object-cover w-[180px]',
-              img.isLandscape ? 'h-[110px]' : 'h-[220px]',
-            )}
-            loading="lazy"
-            onClick={() => onClickImage(img, index)}
-          />
+        {columns.map((col, colIdx) => (
+          <div key={colIdx} className="flex flex-col gap-2">
+            {col.map((img, rowIdx) => (
+              <img
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                className={clsx(
+                  'block rounded-lg bg-[#eee] flex-none object-cover w-[180px]',
+                  // landscape 2장 묶음이면 높이 반씩, 아니면 원래대로
+                  col.length === 2
+                    ? 'h-[110px]'
+                    : img.isLandscape
+                      ? 'h-[110px]'
+                      : 'h-[220px]'
+                )}
+                loading="lazy"
+                onClick={() => onClickImage(img, colIdx * 2 + rowIdx)}
+              />
+            ))}
+          </div>
         ))}
       </div>
       <Modal open={!!modalImage} onClose={() => setModalImage(null)}>
