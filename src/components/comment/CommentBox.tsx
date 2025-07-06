@@ -26,7 +26,7 @@ type Comment = {
   createdAt: Timestamp;
 };
 
-const PAGE_SIZE = 3;
+const PAGE_SIZE = 10;
 
 export default function CommentBox() {
   const [comments, setComments] = useState<Comment[]>([]);
@@ -145,7 +145,7 @@ export default function CommentBox() {
             <input
               type="text"
               name="name"
-              className="p-2 border border-gray-300 rounded w-1/3"
+              className="p-2 border border-gray-200 rounded w-1/3"
               placeholder="이름"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -164,17 +164,17 @@ export default function CommentBox() {
         </div>
         <ul className="space-y-2">
           {comments.map((c) => (
-            <li key={c.id} className="border p-4 rounded bg-pink-50 border-[#dddddd]">
+            <li key={c.id} className="p-4 rounded bg-pink-50 shadow-md">
               {editingId === c.id ? (
                 <div className="flex flex-col gap-2">
                   <input
                     type="text"
-                    className="p-2 border border-gray-300 rounded"
+                    className="p-2 border border-gray-300 rounded bg-white"
                     value={editName}
                     onChange={(e) => setEditName(e.target.value)}
                   />
                   <input
-                    className="p-2 border border-gray-300 rounded"
+                    className="p-2 border border-gray-300 rounded bg-white"
                     value={editText}
                     onChange={(e) => setEditText(e.target.value)}
                   />
@@ -182,7 +182,7 @@ export default function CommentBox() {
                     <button
                       type="button"
                       onClick={() => handleUpdateComment(c.id)}
-                      className="text-sm text-blue-500"
+                      className="text-sm text-gray-500"
                     >
                       저장
                     </button>
