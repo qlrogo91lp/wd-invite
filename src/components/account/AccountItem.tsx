@@ -20,7 +20,7 @@ export default function AccountItem( { type, name, bank, account }: Props) {
   }
 
   return (
-    <div className='border border-gray-100 p-6 flex gap-4 justify-between items-center text-gray-500 text-sm'>
+    <div className='border border-gray-100 px-4 py-6 flex gap-4 justify-between items-center text-gray-500 text-sm'>
       <div className='flex flex-col gap-2'>
         <p>{type}<span className='ml-1 text-black'>{name}</span></p>
         <p>{bank}<span className='ml-1'>{account}</span></p>

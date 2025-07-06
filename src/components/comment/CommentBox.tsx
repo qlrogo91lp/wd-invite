@@ -26,7 +26,7 @@ type Comment = {
   createdAt: Timestamp;
 };
 
-const PAGE_SIZE = 3;
+const PAGE_SIZE = 10;
 
 export default function CommentBox() {
   const [comments, setComments] = useState<Comment[]>([]);
@@ -145,7 +145,7 @@ export default function CommentBox() {
             <input
               type="text"
               name="name"
-              className="p-2 border border-gray-300 rounded w-1/3"
+              className="p-2 border border-gray-200 rounded w-1/3 focus:border-gray-400 focus:outline-none"
               placeholder="이름"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -156,72 +156,78 @@ export default function CommentBox() {
           </div>
           <input
             name="comment"
-            className="p-2 border border-gray-300 rounded"
+            className="p-2 border border-gray-200 rounded focus:border-gray-400 focus:outline-none"
             placeholder="댓글을 입력하세요"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
           />
         </div>
-        <ul className="space-y-2">
-          {comments.map((c) => (
-            <li key={c.id} className="border p-4 rounded bg-pink-50 border-[#dddddd]">
-              {editingId === c.id ? (
-                <div className="flex flex-col gap-2">
-                  <input
-                    type="text"
-                    className="p-2 border border-gray-300 rounded"
-                    value={editName}
-                    onChange={(e) => setEditName(e.target.value)}
-                  />
-                  <input
-                    className="p-2 border border-gray-300 rounded"
-                    value={editText}
-                    onChange={(e) => setEditText(e.target.value)}
-                  />
-                  <div className="flex justify-end gap-2">
-                    <button
-                      type="button"
-                      onClick={() => handleUpdateComment(c.id)}
-                      className="text-sm text-blue-500"
-                    >
-                      저장
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleCancelEdit}
-                      className="text-sm text-gray-500"
-                    >
-                      취소
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="flex flex-col gap-2">
-                  <div className="flex justify-between">
-                    <p className="text-sm">{c.name}</p>
-                    <div className="flex gap-2">
+        <ul className="space-y-2 min-h-[40px]">
+          {loading ? (
+            <li className='flex items-center justify-center'>
+              <Loading />
+            </li>
+          ) : (
+            comments.map((c) => (
+              <li key={c.id} className="p-4 rounded bg-pink-50 shadow-md">
+                {editingId === c.id ? (
+                  <div className="flex flex-col gap-2">
+                    <input
+                      type="text"
+                      className="p-2 border border-gray-300 rounded bg-white focus:border-gray-400 focus:outline-none"
+                      value={editName}
+                      onChange={(e) => setEditName(e.target.value)}
+                    />
+                    <input
+                      className="p-2 border border-gray-300 rounded bg-white focus:border-gray-400 focus:outline-none"
+                      value={editText}
+                      onChange={(e) => setEditText(e.target.value)}
+                    />
+                    <div className="flex justify-end gap-2">
                       <button
                         type="button"
-                        onClick={() => handleStartEdit(c)}
+                        onClick={() => handleUpdateComment(c.id)}
                         className="text-sm text-gray-500"
                       >
-                        수정
+                        저장
                       </button>
                       <button
                         type="button"
-                        onClick={() => handleDeleteComment(c.id)}
+                        onClick={handleCancelEdit}
                         className="text-sm text-gray-500"
                       >
-                        삭제
+                        취소
                       </button>
                     </div>
                   </div>
-                  <p className="text-sm">{c.text}</p>
-                  <p className="text-xs text-gray-500">{c.createdAt.toDate().toLocaleString()}</p>
-                </div>
-              )}
-            </li>
-          ))}
+                ) : (
+                  <div className="flex flex-col gap-2">
+                    <div className="flex justify-between">
+                      <p className="text-sm">{c.name}</p>
+                      <div className="flex gap-2">
+                        <button
+                          type="button"
+                          onClick={() => handleStartEdit(c)}
+                          className="text-sm text-gray-500"
+                        >
+                          수정
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteComment(c.id)}
+                          className="text-sm text-gray-500"
+                        >
+                          삭제
+                        </button>
+                      </div>
+                    </div>
+                    <p className="text-sm">{c.text}</p>
+                    <p className="text-xs text-gray-500">{c.createdAt.toDate().toLocaleString()}</p>
+                  </div>
+                )}
+              </li>
+            ))
+          )}
         </ul>
         {hasMore && (
           <motion.button
@@ -232,14 +238,15 @@ export default function CommentBox() {
             disabled={loading}
           >
             {loading ? <Loading /> :
-                <>
-                  <AiOutlinePlus size={20} />
-                  더 보기
-                </>
+              <>
+                <AiOutlinePlus size={20} />
+                더 보기
+              </>
             }
           </motion.button>
         )}
       </section>
     </Suspense>
-  );
+  )
+    ;
 }

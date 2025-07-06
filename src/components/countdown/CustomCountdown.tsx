@@ -22,13 +22,13 @@ export default function CustomCountdown() {
 			return (
 				<section className="w-full text-center">
 					<div className="flex justify-center gap-2">
-						<TimeBox label="Days" value={days} />
+						<TimeBox label="일" value={days} />
 						<Colon />
-						<TimeBox label="Hour" value={hours} />
+						<TimeBox label="시" value={hours} />
 						<Colon />
-						<TimeBox label="Min" value={minutes} />
+						<TimeBox label="분" value={minutes} />
 						<Colon />
-						<TimeBox label="Sec" value={seconds} />
+						<TimeBox label="초" value={seconds} />
 					</div>
 					<p className="mt-5 text-medium">
 						윤재 <span className="text-pink-400">💗</span> 지은의 결혼식이 <span className="text-[indianred] font-bold">{days + 1} </span>일 남았습니다.
