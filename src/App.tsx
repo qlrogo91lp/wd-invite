@@ -10,7 +10,7 @@ import ShareButton from '@components/ShareButton';
 import CommentBox from '@components/comment/CommentBox';
 import Title from '@components/common/Title';
 import Description from '@components/Description.tsx';
-import Account from '@components/Account.tsx';
+import Account from '@components/account/Account.tsx';
 
 export default function App() {
   return (

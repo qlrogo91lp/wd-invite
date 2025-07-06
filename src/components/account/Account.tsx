@@ -18,13 +18,13 @@ export default function Account() {
       </header>
       <Accordion title='신랑측'>
         <AccountItem type='신랑' name='김윤재' bank='신한' account='110-315-986280' />
-        <AccountItem type='아버지' name='김희택' bank='신한' account='110-315-986280' />
-        <AccountItem type='어머니' name='정미자' bank='신한' account='110-315-986280' />
+        <AccountItem type='아버지' name='김희택' bank='농협' account='356-0582-9567-03' />
+        <AccountItem type='어머니' name='정미자' bank='신한' account='352-1497-5530-23' />
       </Accordion>
       <Accordion title='신부측'>
-        <AccountItem type='신부' name='이지은' bank='신한' account='110-315-986280' />
-        <AccountItem type='아버지' name='이창수' bank='신한' account='110-315-986280' />
-        <AccountItem type='어머니' name='신명숙' bank='신한' account='110-315-986280' />
+        <AccountItem type='신부' name='이지은' bank='신한' account='110-537-308383' />
+        <AccountItem type='아버지' name='이창수' bank='기업' account='589-009185-01-011' />
+        <AccountItem type='어머니' name='신명숙' bank='기업' account='589-009352-01-018' />
       </Accordion>
     </section>
 
