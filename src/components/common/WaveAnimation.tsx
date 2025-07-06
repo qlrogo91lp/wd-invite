@@ -1,8 +1,8 @@
 export default function WaveAnimation() {
   return (
-    <>
+    <div className="overflow-hidden absolute bottom-0 w-full leading-none">
       <svg
-        className="absolute bottom-0 w-full h-7"
+        className="h-7 w-full block -mb-1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 24 150 28"
         preserveAspectRatio="none"
@@ -42,6 +42,6 @@ export default function WaveAnimation() {
         </g>
         <use xlinkHref="#gentle-wave5" x="70" y="9" fill="#ffffff" />
       </svg>
-    </>
+    </div>
   );
 }
