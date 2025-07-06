@@ -18,9 +18,9 @@ export default function Calendar() {
 				<p className="mb-10 text-medium">
 					더채플 앳 논현 5층 라메르홀
 				</p>
-				<table className="table-fixed">
+				<table className="table-fixed w-[90%]">
 					<thead>
-						<tr className="font-semibold text-m">
+						<tr className="font-semibold text-sm">
 							<th className="text-primary">일</th>
 							<th>월</th>
 							<th>화</th>
@@ -30,7 +30,7 @@ export default function Calendar() {
 							<th>토</th>
 						</tr>
 					</thead>
-					<tbody className="text-base">
+					<tbody className="text-sm">
 						{WEEKS.map((week, rowIdx) => (
 							<tr key={rowIdx}>
 								{week.map((day, colIdx) => {
@@ -43,7 +43,7 @@ export default function Calendar() {
 													<div className="flex items-center justify-center w-10 h-10 mx-auto text-white bg-primary rounded-full">
 														{day}
 													</div>
-													<div className="absolute text-xs text-primary top-11">
+													<div className="absolute text-[10px] text-primary top-11">
 														<p>오후</p>
 														<p>12시 30분</p>
 													</div>
