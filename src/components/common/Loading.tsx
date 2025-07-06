@@ -2,6 +2,6 @@ import { ScaleLoader } from 'react-spinners';
 
 export default function Loading() {
 	return (
-		<ScaleLoader color='#888' />
+		<ScaleLoader color='#cccccc' height={20}/>
 	);
 }

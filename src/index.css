@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Merriweather&family=Noto+Serif+KR&family=Playfair+Display&family=Gowun+Dodum&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -6,6 +7,7 @@
   --font-nanoSerifKr: "Noto Serif KR", "sans-serif";
   --font-dancingScript: "Dancing Script", "sans-serif";
   --font-gowunDodum: "Gowun Dodum", "sans-serif";
+  --font-blackoutOldskull: "BlackoutOldskull", "sans-serif";
 
   --animate-wave: 'wave 10s linear infinite';
 
@@ -17,10 +19,19 @@
       transform: translateX(-160px);
     }
   }
+
+  --color-primary: #fbcfe8;
 }
 
 body {
   font-family: 'Gowun Dodum', sans-serif;
+}
+
+@font-face {
+  font-family: 'BlackoutOldskull';
+  font-style: normal;
+  font-weight: 400;
+  src: url("@assets/fonts/BlackoutOldskull.ttf") format("truetype");
 }
 
 @layer components {
