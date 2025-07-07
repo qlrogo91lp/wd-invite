@@ -68,7 +68,7 @@ export default function Directions() {
 					</div>
 					<WayTitle title='주차안내' icon={<TbParkingCircleFilled size={25} />} />
 					<div className='flex flex-col justify-center gap-1'>
-						<p>건물 내 주차공간이 협소하오니 대중교통을 이용해 주시기 바랍니다. 외부주차장 2시간 30분 무료 (더채플에서 발렛으로 이동)</p>
+						<p>더채플앳논현 내부 1시간 30분 무료. 외부주차장 2시간 30분 무료 (더채플에서 발렛으로 이동)</p>
 						<p>{'=> 더채플앳논현 건물 앞 셔틀버스로 이동'}</p>
 					</div>
 				</article>

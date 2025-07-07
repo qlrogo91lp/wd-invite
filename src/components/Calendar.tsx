@@ -12,11 +12,8 @@ export default function Calendar() {
 	return (
 		<ScrollFadeIn>
 			<div className='flex flex-col items-center w-full px-7'>
-				<p className="mb-2 text-md font-semibold text-black">
-					2025년 9월 13일 토요일
-				</p>
-				<p className="mb-10 text-medium">
-					오후 12시 30분
+				<p className="mb-2 text-sm font-semibold text-black mb-10">
+					2025년 9월 13일 토요일 오후 12시 30분
 				</p>
 				<table className="table-fixed w-[90%]">
 					<thead>
@@ -43,7 +40,7 @@ export default function Calendar() {
 													<div className="flex items-center justify-center w-10 h-10 mx-auto text-white bg-primary rounded-full">
 														{day}
 													</div>
-													<div className="absolute text-[11px] text-primary top-11 whitespace-nowrap -left-2">
+													<div className="absolute text-[11px] text-primary top-11 whitespace-nowrap -left-3">
 														<p>오후 12시 30분</p>
 													</div>
 												</div>
