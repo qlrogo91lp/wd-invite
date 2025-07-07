@@ -19,7 +19,7 @@ export default function Header() {
 					</div>
 				</div>
 				<img
-					src='https://kr.object.ncloudstorage.com/gandi-cdn/pic/wd11.webp'
+					src='https://kr.object.ncloudstorage.com/gandi-cdn/pic/cover.webp'
 					alt='cover'
 					loading='lazy'
 					className='w-full h-auto rounded-t-full mt-5 px-5'

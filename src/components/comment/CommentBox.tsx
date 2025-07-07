@@ -145,7 +145,7 @@ export default function CommentBox() {
             <input
               type="text"
               name="name"
-              className="p-2 border border-gray-200 rounded w-1/3 focus:border-gray-400 focus:outline-none"
+              className="p-2 border border-gray-200 rounded w-1/3 focus:border-gray-400 focus:outline-none bg-white"
               placeholder="이름"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -156,7 +156,7 @@ export default function CommentBox() {
           </div>
           <input
             name="comment"
-            className="p-2 border border-gray-200 rounded focus:border-gray-400 focus:outline-none"
+            className="p-2 border border-gray-200 rounded focus:border-gray-400 focus:outline-none bg-white"
             placeholder="댓글을 입력하세요"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
@@ -164,7 +164,7 @@ export default function CommentBox() {
         </div>
         <ul className="space-y-2 min-h-[40px]">
           {loading ? (
-            <li className='flex items-center justify-center'>
+            <li className="flex items-center justify-center">
               <Loading />
             </li>
           ) : (

@@ -16,7 +16,7 @@ export default function Accordion({ title, children }: Props) {
   };
 
   return (
-    <article className="mx-10 ">
+    <article className="mx-10 bg-white">
       <div className='relative flex justify-center h-10 border border-gray-100 items-center'>
         <p className="text-sm">{title}</p>
         <IoIosArrowDown

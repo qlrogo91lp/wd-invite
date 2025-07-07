@@ -14,7 +14,7 @@ import Account from '@components/account/Account.tsx';
 
 export default function App() {
   return (
-    <main className="flex flex-col max-w-[440px] mx-auto gap-15">
+    <main className="flex flex-col max-w-[440px] mx-auto gap-15 bg-[rgba(253,250,250,1))]">
       <Header />
       <Title title="Invite you" />
       <OpeningMessage />
