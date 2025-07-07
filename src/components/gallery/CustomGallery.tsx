@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Modal from '@components/common/Modal.tsx';
 import ImageDetailItem from '@components/gallery/ImageDetailItem.tsx';
+import { format } from 'date-fns';
 
 const bucketUrl = 'https://kr.object.ncloudstorage.com/gandi-cdn/pic';
 const imageCount = 20;
 
 const imageUrls = Array.from({ length: imageCount }, (_, i) => {
-  const fileName = `wd${i + 1}.webp`;
+  const today = new Date();
+  const fileName = `wd${i + 1}.webp?date=${format(today, 'yyyy-MM-dd_HH:mm')}`;
   return {
     src: `${bucketUrl}/${fileName}`,
     alt: `wd${i + 1}`,
