@@ -28,7 +28,7 @@ export default function Directions() {
 					<p>더채플 앳 논현 5층 라메르홀</p>
 				</hgroup>
 				<NaverMap />
-				<article className='flex justify-evenly border border-gray-300 rounded-lg px-5 py-4 h-full'>
+				<article className='flex justify-evenly border border-gray-300 rounded-lg px-5 py-4 h-full bg-white'>
 					<NaverMapLauncher />
 					<Divider />
 					<KakaoMapLauncher />
@@ -56,17 +56,21 @@ export default function Directions() {
 						<p>지하철 역삼역 (2호선) : </p>
 					</div>
 					<p>6번 출구로 나와 좌측방향으로 450M 도보 후 좌측 건물</p>
-					<div className='flex items-center gap-2'>
+					<div className='flex items-center gap-1'>
 						<FaCircle color='#BDB092' size={10} />
 						<p>지하철 언주역 (9호선) : </p>
 					</div>
 					<p>7번 출구로 나와 정면방향으로 150M 도보 후 우측 건물</p>
 					<WayTitle title='자가용' icon={<FaCar size={25} />} />
-					<p className='leading-6'>동호대교 방면 동호대교 남단에서 3호선 압구정역, 7호선 학동역을 지나 차병원 사거리에서 2호선 역삼역 방면으로 200m 직진 후 우측 건물</p>
+					<div className='flex flex-col justify-center gap-1'>
+						<p>내비게이션 "더 채플앳 논현" 또는</p>
+						<p>"서울 강남구 논현로 549" 입력</p>
+					</div>
 					<WayTitle title='주차안내' icon={<TbParkingCircleFilled size={25} />} />
-					<p>건물 내 주차공간이 협소하오니 대중교통을 이용해 주시기 바랍니다.</p>
-					<p>외부주차장 2시간 30분 무료(더채플에서 발렛으로 이동)</p>
-					<p>{'=> 더채플앳논현 건물 앞 셔틀버스로 이동'}</p>
+					<div className='flex flex-col justify-center gap-1'>
+						<p>건물 내 주차공간이 협소하오니 대중교통을 이용해 주시기 바랍니다. 외부주차장 2시간 30분 무료 (더채플에서 발렛으로 이동)</p>
+						<p>{'=> 더채플앳논현 건물 앞 셔틀버스로 이동'}</p>
+					</div>
 				</article>
 			</div>
 		</ScrollFadeIn>
