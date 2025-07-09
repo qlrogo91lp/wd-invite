@@ -102,8 +102,8 @@ export default function CustomGallery() {
   };
 
   return (
-    <section className="overflow-x-auto overflow-y-hidden scrollbar-hide touch-pan-x w-full px-3 scrollbar-hide">
-      <div className="grid grid-rows-2 gap-2 mb-1 grid-flow-col min-w-max">
+    <section className="overflow-x-auto overflow-y-hidden scrollbar-hide touch-pan-x w-[440px] px-3">
+      <div className="grid grid-rows-2 gap-2 mb-1 grid-flow-col min-w-max pr-3">
         {columns.map((col, colIdx) => (
           <div key={colIdx} className="flex flex-col gap-2">
             {col.map((img, rowIdx) => (

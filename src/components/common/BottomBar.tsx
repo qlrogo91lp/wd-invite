@@ -5,7 +5,6 @@ import { VscMute } from 'react-icons/vsc';
 import { IoShareSocialOutline } from 'react-icons/io5';
 import BGM from '/bgm.mp3';
 
-
 export default function BottomBar() {
   const [onPlay, setOnPlay] = useState<boolean>(false);
   const ref = useRef<HTMLAudioElement>(new Audio(BGM));
