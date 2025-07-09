@@ -11,10 +11,11 @@ import CommentBox from '@components/comment/CommentBox';
 import Title from '@components/common/Title';
 import Description from '@components/Description.tsx';
 import Account from '@components/account/Account.tsx';
+import BottomBar from '@components/common/BottomBar';
 
 export default function App() {
   return (
-    <main className="flex flex-col max-w-[440px] mx-auto gap-15 bg-[rgba(253,250,250,1))]">
+    <main className="flex flex-col w-[440px] mx-auto gap-15 bg-[rgba(253,250,250,1))] mb-[45px]">
       <Header />
       <Title title="Invite you" />
       <OpeningMessage />
@@ -33,6 +34,7 @@ export default function App() {
       <Title title="Guestbook" subTitle="방명록" />
       <CommentBox />
       <Footer />
+      <BottomBar />
     </main>
   );
 }
