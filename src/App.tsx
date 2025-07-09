@@ -15,7 +15,8 @@ import BottomBar from '@components/common/BottomBar';
 
 export default function App() {
   return (
-    <main className="flex flex-col w-[440px] mx-auto gap-15 bg-[rgba(253,250,250,1))] mb-[45px]">
+    <main
+      className="flex flex-col w-full max-w-[440px] mx-auto gap-15 bg-[rgba(253,250,250,1)] mb-[45px] overflow-x-hidden scrollbar-hide">
       <Header />
       <Title title="Invite you" />
       <OpeningMessage />
