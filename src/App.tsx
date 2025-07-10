@@ -11,12 +11,19 @@ import CommentBox from '@components/comment/CommentBox';
 import Title from '@components/common/Title';
 import Description from '@components/Description.tsx';
 import Account from '@components/account/Account.tsx';
-import BottomBar from '@components/common/BottomBar';
+import FloatingButtons from '@components/common/FloatingButtons';
+import { useEffect } from 'react';
 
 export default function App() {
+  useEffect(() => {
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init(import.meta.env.VITE_KAKAO_APP_KEY);
+    }
+  }, []);
+
   return (
     <main
-      className="flex flex-col w-full max-w-[440px] mx-auto gap-15 bg-[rgba(253,250,250,1)] mb-[45px] overflow-x-hidden scrollbar-hide">
+      className="flex flex-col w-full max-w-[440px] mx-auto gap-15 bg-[rgba(253,250,250,1)] overflow-x-hidden scrollbar-hide">
       <Header />
       <Title title="Invite you" />
       <OpeningMessage />
@@ -35,7 +42,7 @@ export default function App() {
       <Title title="Guestbook" subTitle="방명록" />
       <CommentBox />
       <Footer />
-      <BottomBar />
+      <FloatingButtons />
     </main>
   );
 }
