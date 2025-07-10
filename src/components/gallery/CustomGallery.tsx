@@ -3,6 +3,8 @@ import clsx from 'clsx';
 import Modal from '@components/common/Modal.tsx';
 import ImageDetailItem from '@components/gallery/ImageDetailItem.tsx';
 import { format } from 'date-fns';
+import Lottie from 'lottie-react';
+import lottieAnimation from '@assets/lottie/lottie-scroll.json';
 
 const bucketUrl = 'https://kr.object.ncloudstorage.com/gandi-cdn/pic';
 const imageCount = 20;
@@ -47,6 +49,7 @@ export default function CustomGallery() {
   const [modalImage, setModalImage] = useState<GalleryImage | null>(null);
   const [prev, setPrev] = useState<number | null>(null);
   const [next, setNext] = useState<number | null>(null);
+  const [isPop, setIsPop] = useState(true);
 
   const columns = getColumns(images);
 
@@ -101,9 +104,17 @@ export default function CustomGallery() {
     }
   };
 
+  const onClickGallery = () => {
+    setIsPop(false);
+  };
+
   return (
-    <section className="overflow-x-auto overflow-y-hidden scrollbar-hide touch-pan-x w-[440px] px-3">
-      <div className="grid grid-rows-2 gap-2 mb-1 grid-flow-col min-w-max pr-3">
+    <section
+      className="overflow-x-auto overflow-y-hidden scrollbar-hide touch-pan-x w-[440px] px-3"
+      onClick={onClickGallery}
+      onTouchStart={onClickGallery}
+    >
+      <div className="relative grid grid-rows-2 gap-2 mb-1 grid-flow-col min-w-max pr-3">
         {columns.map((col, colIdx) => (
           <div key={colIdx} className="flex flex-col gap-2">
             {col.map((img, rowIdx) => (
@@ -118,7 +129,7 @@ export default function CustomGallery() {
                     ? 'h-[110px]'
                     : img.isLandscape
                       ? 'h-[110px]'
-                      : 'h-[220px]'
+                      : 'h-[220px]',
                 )}
                 loading="lazy"
                 onClick={() => onClickImage(img, colIdx * 2 + rowIdx)}
@@ -126,6 +137,14 @@ export default function CustomGallery() {
             ))}
           </div>
         ))}
+        {isPop && (
+          <div className="absolute top-2 left-2 w-[120px] h-[75px] bg-black/50 rounded-lg">
+            <div className="relative w-full h-full">
+              <Lottie animationData={lottieAnimation} loop className="w-[90px] h-[65px] scale-200" />
+              <p className="absolute text-xs text-white bottom-1 left-0 right-0 text-center">밀어서 사진보기</p>
+            </div>
+          </div>
+        )}
       </div>
       <Modal open={!!modalImage} onClose={() => setModalImage(null)}>
         {modalImage &&
