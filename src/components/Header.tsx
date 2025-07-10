@@ -2,7 +2,8 @@ import { useState } from 'react';
 
 import BlurText from '@components/common/BlurText';
 import Sakura from './common/Sakura';
-import WaveAnimation from '@components/common/WaveAnimation.tsx';
+import Bottom from '@assets/svgs/bottomEdge.svg';
+import Wave from 'react-wavify';
 
 export default function Header() {
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -11,7 +12,7 @@ export default function Header() {
       <header className="relative">
         <Sakura />
         <div className="absolute z-10 w-full">
-          <div className='flex flex-col items-center justify-center mt-7 gap-2'>
+          <div className="flex flex-col items-center justify-center mt-7 gap-2">
             <p className="font-merriweather text-[9px] tracking-[0.5em]">WEDDING INVITATION</p>
             <div className="flex items-center gap-2">
               <p className="text-sm">김윤재</p>
@@ -40,7 +41,22 @@ export default function Header() {
             />
           </div>
         )}
-        <WaveAnimation />
+        <div className='absolute w-full bottom-0'>
+          <img src={Bottom} alt='bottom' />
+        </div>
+        <div className='absolute w-full h-10 -bottom-5'>
+          <Wave
+            fill="#ffffff"
+            paused={false}
+            className='flex h-6'
+            options={{
+              height: 5,
+              amplitude: 10,
+              speed: 0.2,
+              points: 3,
+            }}
+          />
+        </div>
       </header>
       <aside className="flex justify-center mt-5">
         <div className="flex flex-col items-center gap-2">

@@ -49,18 +49,18 @@ export default function Directions() {
 						<FaCircle color='rgb(214, 50, 50)' size={10} /> 
 						<p>광역 : 3600 / 9600</p>
 						</div>
-					<p>차병원(역삼방면) 하차 후 역삼역 방면 50M앞 우측 건물</p>
+					<p>차병원(역삼방면) 하차 후 역삼역 방면 50M</p>
 					<WayTitle title='지하철' icon={<FaSubway size={25} />} />
 					<div className='flex items-center gap-2'>
 						<FaCircle color='#00A84D' size={10} />
 						<p>지하철 역삼역 (2호선) : </p>
 					</div>
-					<p>6번 출구로 나와 좌측방향으로 450M 도보 후 좌측 건물</p>
+					<p>6번 출구로 나와 좌측방향으로 450M</p>
 					<div className='flex items-center gap-1'>
 						<FaCircle color='#BDB092' size={10} />
 						<p>지하철 언주역 (9호선) : </p>
 					</div>
-					<p>7번 출구로 나와 정면방향으로 150M 도보 후 우측 건물</p>
+					<p>7번 출구로 나와 정면방향으로 150M</p>
 					<WayTitle title='자가용' icon={<FaCar size={25} />} />
 					<div className='flex flex-col justify-center gap-1'>
 						<p>내비게이션 "더 채플앳 논현" 또는</p>
@@ -68,7 +68,8 @@ export default function Directions() {
 					</div>
 					<WayTitle title='주차안내' icon={<TbParkingCircleFilled size={25} />} />
 					<div className='flex flex-col justify-center gap-1'>
-						<p>더채플앳논현 내부 1시간 30분 무료. 외부주차장 2시간 30분 무료 (더채플에서 발렛으로 이동)</p>
+						<p>더채플앳논현 내부 1시간 30분 무료</p>
+						<p>외부주차장 2시간 30분 무료 (더채플에서 발렛으로 이동)</p>
 						<p>{'=> 더채플앳논현 건물 앞 셔틀버스로 이동'}</p>
 					</div>
 				</article>
