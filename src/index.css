@@ -9,14 +9,12 @@
   --font-gowunDodum: "Gowun Dodum", "sans-serif";
   --font-blackoutOldskull: "BlackoutOldskull", "sans-serif";
 
-  --animate-wave: 'wave 10s linear infinite';
-
-  @keyframes wave {
+  @keyframes move-forever {
     0% {
-      transform: translateX(0);
+      transform: translate3d(-90px, 0, 0);
     }
     100% {
-      transform: translateX(-160px);
+      transform: translate3d(85px, 0, 0);
     }
   }
 
@@ -36,16 +34,19 @@ body {
 
 @layer components {
   .parallax > use {
-    animation: wave 10s linear infinite;
-  }
-  .parallax > use:nth-child(1) {
-    animation-delay: 0s;
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
   }
   .parallax > use:nth-child(2) {
-    animation-delay: 2.5s;
+    animation-delay: -3s;
+    animation-duration: 10s;
   }
   .parallax > use:nth-child(3) {
-    animation-delay: 5s;
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
   }
 }
 
