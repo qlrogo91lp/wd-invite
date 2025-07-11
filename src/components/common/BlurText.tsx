@@ -34,7 +34,7 @@ type Props = {
 
 export default function BlurText({
 	text = '',
-	delay = 200,
+	delay = 500,
 	className = '',
 	animateBy = 'words',
 	direction = 'top',
