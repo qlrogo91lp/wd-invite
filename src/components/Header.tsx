@@ -19,7 +19,6 @@ export default function Header() {
               <p className="text-sm">이지은</p>
             </div>
           </div>
-
         </div>
         <img
           src="https://kr.object.ncloudstorage.com/gandi-cdn/pic/cover.webp"
