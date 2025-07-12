@@ -1,6 +1,6 @@
 export default function WaveAnimation() {
   return (
-    <div className="absolute -bottom-[1px] h-10 w-full">
+    <div className="absolute bottom-0 h-10 w-full border-b-white">
       <svg
         className="w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
