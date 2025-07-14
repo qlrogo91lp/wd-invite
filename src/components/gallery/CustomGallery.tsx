@@ -90,6 +90,7 @@ export default function CustomGallery() {
 
   const onClickPrev = () => {
     if (prev !== null) {
+      setModalImage(null);
       setModalImage(images[prev]);
       setPrev(prev - 1 < 0 ? null : prev - 1);
       setNext(prev);
