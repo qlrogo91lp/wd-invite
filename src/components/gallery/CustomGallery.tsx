@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Modal from '@components/common/Modal.tsx';
 import ImageDetailItem from '@components/gallery/ImageDetailItem.tsx';
+import ImageDetailSlider from '@components/gallery/ImageDetailSlider.tsx';
 import { format } from 'date-fns';
 import Lottie from 'lottie-react';
 import lottieAnimation from '@assets/lottie/lottie-scroll.json';
@@ -36,7 +37,7 @@ function getColumns(images: GalleryImage[]) {
   }, []);
 }
 
-type GalleryImage = {
+export type GalleryImage = {
   src: string;
   alt: string;
   isLandscape: boolean;
@@ -47,6 +48,7 @@ type GalleryImage = {
 export default function CustomGallery() {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [modalImage, setModalImage] = useState<GalleryImage | null>(null);
+  const [initialIndex, setInitialIndex] = useState<number | null>(null);
   const [prev, setPrev] = useState<number | null>(null);
   const [next, setNext] = useState<number | null>(null);
   const [isPop, setIsPop] = useState(true);
@@ -81,12 +83,17 @@ export default function CustomGallery() {
     ).then(setImages);
   }, []);
 
-  const onClickImage = (image: GalleryImage, index: number,
-  ) => {
-    setPrev(index - 1 < 0 ? null : index - 1);
-    setNext(index + 1 >= images.length ? null : index + 1);
+  const onClickImage = (image: GalleryImage, index: number) => {
+    setInitialIndex(index);
     setModalImage(image);
   };
+
+  // const onClickImage = (image: GalleryImage, index: number,
+  // ) => {
+  //   setPrev(index - 1 < 0 ? null : index - 1);
+  //   setNext(index + 1 >= images.length ? null : index + 1);
+  //   setModalImage(image);
+  // };
 
   const onClickPrev = () => {
     if (prev !== null) {
@@ -148,14 +155,21 @@ export default function CustomGallery() {
         )}
       </div>
       <Modal open={!!modalImage} onClose={() => setModalImage(null)}>
-        {modalImage &&
-          <ImageDetailItem
-            imgSrc={modalImage.src}
-            imgAlt={modalImage.alt}
-            onPrev={prev ? onClickPrev : undefined}
-            onNext={next ? onClickNext : undefined}
-            onClose={() => setModalImage(null)}
-          />}
+        {/*{modalImage &&*/}
+        {/*  <ImageDetailItem*/}
+        {/*    imgSrc={modalImage.src}*/}
+        {/*    imgAlt={modalImage.alt}*/}
+        {/*    onPrev={prev ? onClickPrev : undefined}*/}
+        {/*    onNext={next ? onClickNext : undefined}*/}
+        {/*    onClose={() => setModalImage(null)}*/}
+        {/*  />}*/}
+        {initialIndex !== null && (
+          <ImageDetailSlider
+            images={images}
+            initialIndex={initialIndex}
+            onClose={() => setInitialIndex(null)}
+          />
+        )}
       </Modal>
     </section>
   );
