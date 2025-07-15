@@ -29,6 +29,7 @@ export default function Sakura() {
         pointerEvents: 'none',
         width: '100%',
         height: '100%',
+        zIndex: 999,
       }}
     />
   );

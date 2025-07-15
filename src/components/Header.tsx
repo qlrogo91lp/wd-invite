@@ -3,6 +3,7 @@ import { useState } from 'react';
 import BlurText from '@components/common/BlurText';
 import Sakura from './common/Sakura';
 import WaveAnimation from '@components/common/WaveAnimation.tsx';
+import clsx from 'clsx';
 
 export default function Header() {
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -20,13 +21,21 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <img
-          src="https://kr.object.ncloudstorage.com/gandi-cdn/pic/cover.webp"
-          alt="cover"
-          loading="lazy"
-          className="w-full h-auto"
-          onLoad={() => setImgLoaded(true)}
-        />
+        <div className="relative w-full">
+          <img
+            src="https://kr.object.ncloudstorage.com/gandi-cdn/pic/cover.webp"
+            alt="cover"
+            loading="lazy"
+            className="w-full h-auto"
+            onLoad={() => setImgLoaded(true)}
+          />
+          <div
+            className={clsx(
+              'absolute bottom-0 left-0 w-full h-[45px]',
+              'pointer-events-none  bg-gradient-to-t from-white/80 from-30% to-transparent',
+            )}
+          />
+        </div>
         {imgLoaded && (
           <div className="absolute z-20 bottom-[10%] w-full flex flex-col">
             <BlurText

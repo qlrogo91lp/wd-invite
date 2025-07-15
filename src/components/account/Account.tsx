@@ -5,7 +5,7 @@ import AccountItem from '@components/account/AccountItem.tsx';
 export default function Account() {
   return (
     <section className='flex flex-col gap-4'>
-      <header className="flex flex-col items-center justify-center p-6 text-xs">
+      <header className="flex flex-col items-center justify-center p-6 text-[13px]">
         <p>참석이 어려워 직접 축하를 전하지 못하는</p>
         <SpaceBlock />
         <p>분들을 위해 계좌번호를 기재하였습니다.</p>
