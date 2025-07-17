@@ -1,6 +1,8 @@
+import { useRef } from 'react';
 import { GrPrevious, GrNext } from 'react-icons/gr';
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose } from 'react-icons/io';
 import { motion } from 'framer-motion';
+import * as React from 'react';
 
 type Props = {
   imgSrc: string;
@@ -11,6 +13,8 @@ type Props = {
 }
 
 export default function ImageDetailItem({ imgSrc, imgAlt, onPrev, onNext, onClose }: Props) {
+  const touchStartX = useRef<number | null>(null);
+
   const onPrevHandler = () => {
     if (onPrev) onPrev();
   };
@@ -19,11 +23,32 @@ export default function ImageDetailItem({ imgSrc, imgAlt, onPrev, onNext, onClos
     if (onNext) onNext();
   };
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchEndX - touchStartX.current;
+    const threshold = 50; // 스와이프 인식 최소 거리(px)
+    if (diff > threshold && onPrev) {
+      onPrev();
+    } else if (diff < -threshold && onNext) {
+      onNext();
+    }
+    touchStartX.current = null;
+  };
+
   return (
-    <article className="relative">
+    <article
+      className="relative w-full"
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
       <motion.button
         whileTap={{ scale: 0.9 }}
-        className='absolute -top-10 right-0 z-100'
+        className="absolute -top-10 right-0 z-100"
       >
         <span
           onClick={onClose}>
@@ -40,7 +65,14 @@ export default function ImageDetailItem({ imgSrc, imgAlt, onPrev, onNext, onClos
           </span>
         </motion.button>
       )}
-      <img src={imgSrc} alt={imgAlt} className="touch-none" />
+      <div className="w-full flex justify-center items-center">
+        <img
+          key={imgSrc}
+          src={imgSrc}
+          alt={imgAlt}
+          className="touch-none"
+        />
+      </div>
       {onNext && (
         <motion.button
           whileTap={{ scale: 0.9 }}

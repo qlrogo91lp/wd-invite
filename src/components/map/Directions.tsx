@@ -23,9 +23,9 @@ export default function Directions() {
 		<ScrollFadeIn>
 			<div className='flex flex-col gap-10 px-5'>
 				<hgroup className='flex flex-col items-center'>
-					<h2 className='mb-12 text-xl font-bold '>오시는 길</h2>
-					<p className='text-lg text-gray-700'>서울시 강남구 논현로 549</p>
-					<p>더채플 앳 논현 5층 라메르홀</p>
+					<h2 className='mb-12 text-lg font-bold '>오시는 길</h2>
+					<p className='text-gray-700'>서울시 강남구 논현로 549</p>
+					<p className='text-gray-700'>더채플 앳 논현 5층 라메르홀</p>
 				</hgroup>
 				<NaverMap />
 				<article className='flex justify-evenly border border-gray-300 rounded-lg px-5 py-4 h-full bg-white'>
@@ -69,7 +69,7 @@ export default function Directions() {
 					<WayTitle title='주차안내' icon={<TbParkingCircleFilled size={25} />} />
 					<div className='flex flex-col justify-center gap-1'>
 						<p>더채플앳논현 내부 1시간 30분 무료</p>
-						<p>외부주차장 2시간 30분 무료 (더채플에서 발렛으로 이동)</p>
+						<p>외부주차장 2시간 30분 무료</p>
 						<p>{'=> 더채플앳논현 건물 앞 셔틀버스로 이동'}</p>
 					</div>
 				</article>
