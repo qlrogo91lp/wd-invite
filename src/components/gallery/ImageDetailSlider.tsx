@@ -5,11 +5,13 @@ import { GalleryImage } from '@components/gallery/CustomGallery.tsx';
 
 type Props = {
   images: GalleryImage[];
-  initialIndex: number;
+  id: string;
   onClose?: () => void;
 };
 
-export default function ImageDetailSlider({ images, initialIndex, onClose }: Props) {
+export default function ImageDetailSlider({ images, id, onClose }: Props) {
+  const initialIndex = Math.max(0, images.findIndex((img) => img.alt === id));
+
   const settings = {
     initialSlide: initialIndex,
     infinite: true,
@@ -22,7 +24,7 @@ export default function ImageDetailSlider({ images, initialIndex, onClose }: Pro
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full h-screen">
       <motion.button
         whileTap={{ scale: 0.9 }}
         className="absolute -top-10 right-0 z-100"
@@ -33,11 +35,10 @@ export default function ImageDetailSlider({ images, initialIndex, onClose }: Pro
 
       <Slider {...settings}>
         {images.map((img, idx) => (
-          <div key={idx} className="flex justify-center items-center h-full">
+          <div key={idx} className="flex justify-center items-center w-full min-h-[300px] bg-white">
             <img
               src={img.src}
               alt={img.alt}
-              className="max-h-[80vh] max-w-full min-h-[300px]"
               loading="eager"
             />
           </div>
