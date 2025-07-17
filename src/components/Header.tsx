@@ -26,7 +26,7 @@ export default function Header() {
             src="https://kr.object.ncloudstorage.com/gandi-cdn/pic/cover.webp"
             alt="cover"
             loading="lazy"
-            className="w-full h-auto"
+            className="w-full h-auto "
             onLoad={() => setImgLoaded(true)}
           />
           <div
@@ -35,6 +35,7 @@ export default function Header() {
               'pointer-events-none  bg-gradient-to-t from-white/80 from-30% to-transparent',
             )}
           />
+          <div className="absolute -bottom-5 left-0 right-0 h-5 bg-gradient-to-b from-white to-white/20" />
         </div>
         {imgLoaded && (
           <div className="absolute z-20 bottom-[10%] w-full flex flex-col">
