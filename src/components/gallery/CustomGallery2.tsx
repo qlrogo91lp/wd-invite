@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Modal from '@components/common/Modal.tsx';
-import ImageDetailSlider from '@components/gallery/ImageDetailSlider.tsx';
-import { format } from 'date-fns';
+import ImageDetailItem from '@components/gallery/ImageDetailItem.tsx';
 import Lottie from 'lottie-react';
 import lottieAnimation from '@assets/lottie/lottie-scroll.json';
+import { format } from 'date-fns';
 
 const bucketUrl = 'https://kr.object.ncloudstorage.com/gandi-cdn/pic';
 const imageCount = 20;
@@ -46,8 +46,9 @@ export type GalleryImage = {
 
 export default function CustomGallery() {
   const [images, setImages] = useState<GalleryImage[]>([]);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [initialIndex, setInitialIndex] = useState<string>('');
+  const [modalImage, setModalImage] = useState<GalleryImage | null>(null);
+  const [prev, setPrev] = useState<number | null>(null);
+  const [next, setNext] = useState<number | null>(null);
   const [isPop, setIsPop] = useState(true);
 
   const columns = getColumns(images);
@@ -80,19 +81,33 @@ export default function CustomGallery() {
     ).then(setImages);
   }, []);
 
-  const onClickImage = (img: GalleryImage) => {
-    setInitialIndex(img.alt);
-    setIsOpen(true);
+  const onClickImage = (image: GalleryImage, index: number,
+  ) => {
+    setPrev(index - 1 < 0 ? null : index - 1);
+    setNext(index + 1 >= images.length ? null : index + 1);
+    setModalImage(image);
+  };
+
+  const onClickPrev = () => {
+    if (prev !== null) {
+      setModalImage(null);
+      setModalImage(images[prev]);
+      setPrev(prev - 1 < 0 ? null : prev - 1);
+      setNext(prev);
+    }
+  };
+
+  const onClickNext = () => {
+    if (next !== null) {
+      setModalImage(images[next]);
+      setPrev(next);
+      setNext(next + 1 >= images.length ? null : next + 1);
+    }
   };
 
   const onClickGallery = () => {
     setIsPop(false);
   };
-
-  const onCloseHandler = () => {
-    setIsOpen(false);
-    setInitialIndex('');
-  }
 
   return (
     <section
@@ -103,7 +118,7 @@ export default function CustomGallery() {
       <div className="relative grid grid-rows-2 gap-2 mb-1 grid-flow-col min-w-max pr-3">
         {columns.map((col, colIdx) => (
           <div key={colIdx} className="flex flex-col gap-2">
-            {col.map((img) => (
+            {col.map((img, rowIdx) => (
               <img
                 key={img.src}
                 src={img.src}
@@ -118,7 +133,7 @@ export default function CustomGallery() {
                       : 'h-[220px]',
                 )}
                 loading="lazy"
-                onClick={() => onClickImage(img)}
+                onClick={() => onClickImage(img, colIdx * 2 + rowIdx)}
               />
             ))}
           </div>
@@ -132,12 +147,15 @@ export default function CustomGallery() {
           </div>
         )}
       </div>
-      <Modal open={isOpen} onClose={onCloseHandler}>
-        <ImageDetailSlider
-          images={images}
-          id={initialIndex}
-          onClose={onCloseHandler}
-        />
+      <Modal open={!!modalImage} onClose={() => setModalImage(null)}>
+        {modalImage &&
+          <ImageDetailItem
+            imgSrc={modalImage.src}
+            imgAlt={modalImage.alt}
+            onPrev={prev ? onClickPrev : undefined}
+            onNext={next ? onClickNext : undefined}
+            onClose={() => setModalImage(null)}
+          />}
       </Modal>
     </section>
   );

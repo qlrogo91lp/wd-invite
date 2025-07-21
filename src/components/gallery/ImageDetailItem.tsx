@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { GrPrevious, GrNext } from 'react-icons/gr';
 import { IoMdClose } from 'react-icons/io';
 import { motion } from 'framer-motion';
@@ -14,6 +14,7 @@ type Props = {
 
 export default function ImageDetailItem({ imgSrc, imgAlt, onPrev, onNext, onClose }: Props) {
   const touchStartX = useRef<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const onPrevHandler = () => {
     if (onPrev) onPrev();
@@ -32,11 +33,15 @@ export default function ImageDetailItem({ imgSrc, imgAlt, onPrev, onNext, onClos
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchEndX - touchStartX.current;
     const threshold = 50; // 스와이프 인식 최소 거리(px)
-    if (diff > threshold && onPrev) {
-      onPrev();
-    } else if (diff < -threshold && onNext) {
-      onNext();
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0 && onPrev) {
+        onPrev();
+      } else if (diff < 0 && onNext) {
+        onNext();
+      }
     }
+
     touchStartX.current = null;
   };
 
@@ -55,7 +60,7 @@ export default function ImageDetailItem({ imgSrc, imgAlt, onPrev, onNext, onClos
           <IoMdClose size={35} color="white" />
         </span>
       </motion.button>
-      {onPrev && (
+      {onPrev && !isLoading && (
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={onPrevHandler}
@@ -70,10 +75,12 @@ export default function ImageDetailItem({ imgSrc, imgAlt, onPrev, onNext, onClos
           key={imgSrc}
           src={imgSrc}
           alt={imgAlt}
-          className="touch-none"
+          className="touch-none select-none"
+          onLoad={() => setIsLoading(false)}
+          onLoadStart={() => setIsLoading(true)}
         />
       </div>
-      {onNext && (
+      {onNext && !isLoading && (
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={onNextHandler}
