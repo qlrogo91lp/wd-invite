@@ -23,7 +23,7 @@ export default function Directions() {
 		<ScrollFadeIn>
 			<div className='flex flex-col gap-10 px-5'>
 				<hgroup className='flex flex-col items-center'>
-					<h2 className='mb-12 text-lg font-bold '>오시는 길</h2>
+					<h2 className='font-nanumGothic mb-12 text-lg font-bold'>오시는 길</h2>
 					<p className='text-gray-700'>서울시 강남구 논현로 549</p>
 					<p className='text-gray-700'>더채플 앳 논현 5층 라메르홀</p>
 				</hgroup>

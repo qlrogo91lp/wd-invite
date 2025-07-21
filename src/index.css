@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Merriweather&family=Noto+Serif+KR&family=Playfair+Display&family=Gowun+Dodum&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Merriweather&family=Noto+Serif+KR&family=Playfair+Display&family=Gowun+Dodum&family=Nanum+Gothic:wght@400;700&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -8,6 +8,7 @@
   --font-dancingScript: "Dancing Script", "sans-serif";
   --font-gowunDodum: "Gowun Dodum", "sans-serif";
   --font-blackoutOldskull: "BlackoutOldskull", "sans-serif";
+  --font-nanumGothic: "Nanum Gothic", "sans-serif";
 
   @keyframes move-forever {
     0% {

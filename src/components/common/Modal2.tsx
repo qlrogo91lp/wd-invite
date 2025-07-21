@@ -24,9 +24,9 @@ export default function Modal({ open, onClose, children }: ModalProps) {
         <motion.div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
           onClick={onClose}
-          // initial={{ opacity: 0 }}
-          // animate={{ opacity: 1 }}
-          // exit={{ opacity: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
         >
           <motion.div
             onClick={e => e.stopPropagation()}

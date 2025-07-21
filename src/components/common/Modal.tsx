@@ -23,7 +23,6 @@ export default function Modal({ open, onClose, children }: ModalProps) {
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
           onClick={onClose}
-
         >
           <div
             onClick={e => e.stopPropagation()}

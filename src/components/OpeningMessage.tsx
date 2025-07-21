@@ -14,8 +14,6 @@ export default function OpeningMessage() {
 				<p>저희 두 사람의 새로운 시작에</p>
 				<SpaceBlock />
 				<p>따듯한 축복으로 함께해 주세요.</p>
-				<SpaceBlock />
-				<p>감사합니다.</p>
 			</div>
 		</ScrollFadeIn>
 	);
