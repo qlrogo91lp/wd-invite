@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import Modal from '@components/common/Modal.tsx';
+import Modal from '@components/common/Modal2.tsx';
 import ImageDetailItem from '@components/gallery/ImageDetailItem.tsx';
 import Lottie from 'lottie-react';
 import lottieAnimation from '@assets/lottie/lottie-scroll.json';

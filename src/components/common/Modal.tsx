@@ -8,16 +8,6 @@ interface ModalProps {
 }
 
 export default function Modal({ open, onClose, children }: ModalProps) {
-  // useEffect(() => {
-  //   if (open) {
-  //     const original = document.body.style.overflow;
-  //     document.body.style.overflow = 'hidden';
-  //     return () => {
-  //       document.body.style.overflow = original;
-  //     };
-  //   }
-  // }, [open]);
-
   useEffect(() => {
     if (!open) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -33,7 +23,6 @@ export default function Modal({ open, onClose, children }: ModalProps) {
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
           onClick={onClose}
-
         >
           <div
             onClick={e => e.stopPropagation()}

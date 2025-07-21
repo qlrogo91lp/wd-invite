@@ -37,7 +37,7 @@ export default function App() {
       <Directions />
       <Description />
       <ShareButton />
-      <Title title="Contact" subTitle="마음 전하실 곳" />
+      <Title title="Account" subTitle="마음 전하실 곳" />
       <Account />
       <Title title="Guestbook" subTitle="방명록" />
       <CommentBox />

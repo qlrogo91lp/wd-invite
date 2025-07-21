@@ -26,7 +26,7 @@ export default function Header() {
             src="https://kr.object.ncloudstorage.com/gandi-cdn/pic/cover.webp"
             alt="cover"
             loading="lazy"
-            className="w-full h-auto "
+            className="w-full h-auto"
             onLoad={() => setImgLoaded(true)}
           />
           <div
@@ -49,6 +49,7 @@ export default function Header() {
             />
           </div>
         )}
+        <div className='absolute h-20 w-full bottom-0 bg-gradient-to-t from-white via-white/70 to-transparent' />
         <WaveAnimation />
       </header>
       <aside className="flex justify-center mt-5">
