@@ -1,4 +1,6 @@
 import { AiFillPhone } from 'react-icons/ai';
+import { LiaSmsSolid } from "react-icons/lia";
+import { motion } from 'framer-motion';
 
 type Props = {
   name: string;
@@ -12,13 +14,25 @@ export default function  Contact({ name, description, phone }: Props) {
       {description && <p>{description}</p>}
       <div className='flex justify-between items-center'>
         <p>{name}</p>
-        <button
-          type="button"
-          onClick={() => window.location.href = 'tel:' + phone}
-          className="p-1 rounded-full hover:bg-gray-100 transition"
-        >
-          <AiFillPhone size={20} />
-        </button>
+        <div className='flex items-center gap-4'>
+          <motion.button
+            type="button"
+            onClick={() => window.location.href = 'tel:' + phone}
+            className="p-1 rounded-full hover:bg-gray-100 transition"
+            whileTap={{ scale: 0.9 }}
+          >
+            <AiFillPhone size={20} />
+          </motion.button>
+          <motion.button
+            type="button"
+            onClick={() => window.location.href = 'sms:' + phone}
+            className="p-1 rounded-full hover:bg-gray-100 transition"
+            whileTap={{ scale: 0.9 }}
+          >
+            <LiaSmsSolid size={20} />
+          </motion.button>
+        </div>
+
       </div>
     </div>
   );

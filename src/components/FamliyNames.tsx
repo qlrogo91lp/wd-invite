@@ -33,7 +33,7 @@ export default function FamilyNames() {
 				</motion.button>
 			</article>
 			<Modal open={isOpen} onClose={() => setIsOpen(false)}>
-				<Contact />
+				<Contact onClose={() => setIsOpen(false)} />
 			</Modal>
 		</ScrollFadeIn>
 	);
