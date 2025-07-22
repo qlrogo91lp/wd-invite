@@ -41,7 +41,7 @@ export default function Calendar() {
 														{day}
 													</div>
 													<div className="absolute text-[11px] text-primary top-11 whitespace-nowrap -left-3">
-														<p>오후 12시 30분</p>
+														<p className='font-nanumGothic font-bold'>오후 12시 30분</p>
 													</div>
 												</div>
 											) : (
