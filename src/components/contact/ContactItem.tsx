@@ -11,9 +11,9 @@ type Props = {
 export default function  Contact({ name, description, phone }: Props) {
   return (
     <div className='flex flex-col gap-2'>
-      {description && <p>{description}</p>}
+      {description && <p className='text-sm'>{description}</p>}
       <div className='flex justify-between items-center'>
-        <p>{name}</p>
+        <p className='font-nanumGothic font-bold'>{name}</p>
         <div className='flex items-center gap-4'>
           <motion.button
             type="button"
