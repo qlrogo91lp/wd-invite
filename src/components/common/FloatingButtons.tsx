@@ -7,7 +7,7 @@ import BGM from '/bgm.mp3';
 import { shareWithKakaoTemplate } from '@utils/share.ts';
 
 export default function FloatingButtons() {
-  const [onPlay, setOnPlay] = useState<boolean>(false);
+  const [onPlay, setOnPlay] = useState<boolean>(true);
   const ref = useRef<HTMLAudioElement>(new Audio(BGM));
 
   const onClickHandler = () => {
