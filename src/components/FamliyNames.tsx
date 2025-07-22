@@ -11,15 +11,15 @@ export default function FamilyNames() {
 	return (
 		<ScrollFadeIn>
 			<article className='flex flex-col gap-10'>
-				<div className='w-full grid grid-cols-[1fr_15px_1fr_1fr_1fr] text-center px-10 items-center justify-center'>
+				<div className='w-full grid grid-cols-[55px_15px_55px_40px_40px] text-center px-10 items-center justify-center'>
 					<p className={fontStyle}>김희택</p>
 					<p>·</p>
-					<p className={fontStyle}>정미자<span className='font-medium'>의</span></p>
+					<p className={fontStyle}>정미자<span className='font-medium ml-[1px]'>의</span></p>
 					<p className='font-nanumGothic text-[13px]'>아들</p>
 					<p className={fontStyle}>윤재</p>
 					<p className={fontStyle}>이창수</p>
 					<p>·</p>
-					<p className={fontStyle}>신명숙<span className='font-medium'>의</span></p>
+					<p className={fontStyle}>신명숙<span className='font-medium ml-[1px]'>의</span></p>
 					<p className='font-nanumGothic text-[13px]'>딸</p>
 					<p className={fontStyle}>지은</p>
 				</div>
