@@ -18,13 +18,13 @@ export default function Calendar() {
 				<table className="table-fixed w-[90%]">
 					<thead>
 						<tr className="font-semibold text-sm">
-							<th className="text-primary">일</th>
-							<th>월</th>
-							<th>화</th>
-							<th>수</th>
-							<th>목</th>
-							<th>금</th>
-							<th>토</th>
+							<th className="text-primary font-nanumGothic font-bold">일</th>
+							<th className='font-nanumGothic font-bold'>월</th>
+							<th className='font-nanumGothic font-bold'>화</th>
+							<th className='font-nanumGothic font-bold'>수</th>
+							<th className='font-nanumGothic font-bold'>목</th>
+							<th className='font-nanumGothic font-bold'>금</th>
+							<th className='font-nanumGothic font-bold'>토</th>
 						</tr>
 					</thead>
 					<tbody className="text-sm">

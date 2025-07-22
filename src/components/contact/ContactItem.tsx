@@ -1,5 +1,5 @@
 import { AiFillPhone } from 'react-icons/ai';
-import { LiaSmsSolid } from "react-icons/lia";
+import { GrMail } from "react-icons/gr";
 import { motion } from 'framer-motion';
 
 type Props = {
@@ -29,7 +29,7 @@ export default function  Contact({ name, description, phone }: Props) {
             className="p-1 rounded-full hover:bg-gray-100 transition"
             whileTap={{ scale: 0.9 }}
           >
-            <LiaSmsSolid size={20} />
+            <GrMail size={20} />
           </motion.button>
         </div>
 

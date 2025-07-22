@@ -17,7 +17,7 @@ interface ICountdownProps {
 export default function CustomCountdown() {
 	const renderer = ({ days, hours, minutes, seconds, completed }: ICountdownProps) => {
 		if (completed) {
-			return <p>결혼식 날입니다! 🎉</p>;
+			return <p className='text-center'>결혼식 날입니다! 🎉</p>;
 		} else {
 			return (
 				<section className="w-full text-center">
@@ -30,7 +30,7 @@ export default function CustomCountdown() {
 						<Colon />
 						<TimeBox label="초" value={seconds} />
 					</div>
-					<p className="mt-5 text-medium">
+					<p className="mt-5 text-sm">
 						윤재 <span className="text-pink-400">💗</span> 지은의 결혼식이 <span className="text-[indianred] font-bold">{days + 1} </span>일 남았습니다.
 					</p>
 				</section>
