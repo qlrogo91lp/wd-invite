@@ -70,7 +70,6 @@ export default function Directions() {
 					<div className='flex flex-col justify-center gap-1'>
 						<p>더채플앳논현 내부 1시간 30분 무료</p>
 						<p>외부주차장 2시간 30분 무료</p>
-						<p>{'=> 더채플앳논현 건물 앞 셔틀버스로 이동'}</p>
 					</div>
 				</article>
 			</div>

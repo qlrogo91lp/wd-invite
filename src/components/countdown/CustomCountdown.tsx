@@ -33,7 +33,7 @@ export default function CustomCountdown() {
 					<p className="mt-5 text-sm">
 						윤재
 						<span className="text-pink-400">💗</span> 지은의 결혼식이
-						<span className="text-[#f595d2] font-nanumGothic font-bold">{days + 1}</span>
+						<span className="text-[#f595d2] font-nanumGothic font-bold ml-1">{days + 1}</span>
 						일 남았습니다.
 					</p>
 				</section>
