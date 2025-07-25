@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import Modal from '@components/common/Modal.tsx';
-import ImageDetailSlider from '@components/gallery/ImageDetailSlider.tsx';
-import { format } from 'date-fns';
+import Modal from '@components/common/Modal2.tsx';
+import ImageDetailItem from '@components/gallery/ImageDetailItem.tsx';
 import Lottie from 'lottie-react';
 import lottieAnimation from '@assets/lottie/lottie-scroll.json';
+import { format } from 'date-fns';
 
 const bucketUrl = 'https://kr.object.ncloudstorage.com/gandi-cdn/pic';
 const imageCount = 20;
@@ -46,11 +46,12 @@ export type GalleryImage = {
 
 export default function CustomGallery() {
   const [images, setImages] = useState<GalleryImage[]>([]);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [initialIndex, setInitialIndex] = useState<string>('');
+  const [modalImage, setModalImage] = useState<GalleryImage | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isPop, setIsPop] = useState(true);
 
   const columns = getColumns(images);
+  const flatImages = columns.flat();
 
   useEffect(() => {
     Promise.all(
@@ -80,25 +81,60 @@ export default function CustomGallery() {
     ).then(setImages);
   }, []);
 
-  const onClickImage = (img: GalleryImage) => {
-    setInitialIndex(img.alt);
-    setIsOpen(true);
+  const onClickImage = (clickedImage: GalleryImage) => {
+    const index = flatImages.findIndex(img => img.src === clickedImage.src);
+    if (index !== -1) {
+      setCurrentIndex(index);
+      setModalImage(clickedImage);
+    }
   };
 
-  const onClickGallery = () => {
-    setIsPop(false);
+  const onClickPrev = () => {
+    const prevIndex = currentIndex - 1;
+    if (prevIndex >= 0) {
+      setCurrentIndex(prevIndex);
+      setModalImage(flatImages[prevIndex]);
+    }
   };
 
-  const onCloseHandler = () => {
-    setIsOpen(false);
-    setInitialIndex('');
-  }
+  const onClickNext = () => {
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < flatImages.length) {
+      setCurrentIndex(nextIndex);
+      setModalImage(flatImages[nextIndex]);
+    }
+  };
+
+  const onClickGallery = (e: React.TouchEvent<HTMLElement>) => {
+    const startX = e.touches[0].clientX;
+    const startY = e.touches[0].clientY;
+
+    const handleTouchMove = (moveEvent: Event) => {
+      if (!(moveEvent instanceof TouchEvent)) return;
+
+      const deltaX = Math.abs(moveEvent.touches[0].clientX - startX);
+      const deltaY = Math.abs(moveEvent.touches[0].clientY - startY);
+
+      if (deltaX > deltaY && deltaX > 10) {
+        setIsPop(false);
+      }
+      cleanup();
+    };
+
+    const cleanup = () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', cleanup);
+    };
+
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', cleanup);
+  };
 
   return (
     <section
-      className="overflow-x-auto overflow-y-hidden scrollbar-hide touch-pan-x w-[440px] px-3"
-      onClick={onClickGallery}
-      onTouchStart={onClickGallery}
+      className="overflow-x-auto overflow-y-hidden scrollbar-hide w-[440px] px-3"
+      onClick={() => setIsPop(false)}
+      onTouchStart={(e) => onClickGallery(e)}
     >
       <div className="relative grid grid-rows-2 gap-2 mb-1 grid-flow-col min-w-max pr-3">
         {columns.map((col, colIdx) => (
@@ -132,12 +168,15 @@ export default function CustomGallery() {
           </div>
         )}
       </div>
-      <Modal open={isOpen} onClose={onCloseHandler}>
-        <ImageDetailSlider
-          images={images}
-          id={initialIndex}
-          onClose={onCloseHandler}
-        />
+      <Modal open={!!modalImage} onClose={() => setModalImage(null)}>
+        {modalImage &&
+          <ImageDetailItem
+            imgSrc={modalImage.src}
+            imgAlt={modalImage.alt}
+            onPrev={currentIndex > 0 ? onClickPrev : undefined}
+            onNext={currentIndex < flatImages.length - 1 ? onClickNext : undefined}
+            onClose={() => setModalImage(null)}
+          />}
       </Modal>
     </section>
   );
