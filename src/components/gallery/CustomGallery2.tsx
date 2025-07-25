@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, TouchEvent } from 'react';
 import clsx from 'clsx';
 import Modal from '@components/common/Modal2.tsx';
 import ImageDetailItem from '@components/gallery/ImageDetailItem.tsx';
@@ -105,15 +105,34 @@ export default function CustomGallery() {
     }
   };
 
-  const onClickGallery = () => {
-    setIsPop(false);
+  const onClickGallery = (e: TouchEvent) => {
+    const startX = e.touches[0].clientX;
+    const startY = e.touches[0].clientY;
+
+    const handleTouchMove = (moveEvent: TouchEvent) => {
+      const deltaX = Math.abs(moveEvent.touches[0].clientX - startX);
+      const deltaY = Math.abs(moveEvent.touches[0].clientY - startY);
+
+      if (deltaX > deltaY && deltaX > 10) {
+        setIsPop(false);
+      }
+      cleanup();
+    };
+
+    const cleanup = () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', cleanup);
+    };
+
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', cleanup);
   };
 
   return (
     <section
-      className="overflow-x-auto overflow-y-hidden scrollbar-hide touch-pan-x w-[440px] px-3"
-      onClick={onClickGallery}
-      onTouchStart={onClickGallery}
+      className="overflow-x-auto overflow-y-hidden scrollbar-hide w-[440px] px-3"
+      onClick={() => setIsPop(false)}
+      onTouchStart={(e) => onClickGallery(e)}
     >
       <div className="relative grid grid-rows-2 gap-2 mb-1 grid-flow-col min-w-max pr-3">
         {columns.map((col, colIdx) => (
