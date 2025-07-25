@@ -1,4 +1,4 @@
-import { useEffect, useState, TouchEvent } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Modal from '@components/common/Modal2.tsx';
 import ImageDetailItem from '@components/gallery/ImageDetailItem.tsx';
@@ -105,11 +105,13 @@ export default function CustomGallery() {
     }
   };
 
-  const onClickGallery = (e: TouchEvent) => {
+  const onClickGallery = (e: React.TouchEvent<HTMLElement>) => {
     const startX = e.touches[0].clientX;
     const startY = e.touches[0].clientY;
 
-    const handleTouchMove = (moveEvent: TouchEvent) => {
+    const handleTouchMove = (moveEvent: Event) => {
+      if (!(moveEvent instanceof TouchEvent)) return;
+
       const deltaX = Math.abs(moveEvent.touches[0].clientX - startX);
       const deltaY = Math.abs(moveEvent.touches[0].clientY - startY);
 

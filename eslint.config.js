@@ -24,5 +24,10 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
     },
+    ignores: [
+      'dist/**',
+      'build/**',
+      'node_modules/**',
+    ],
   },
 )
